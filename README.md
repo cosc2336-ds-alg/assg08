@@ -236,7 +236,7 @@ classes.  But for your class, you will have to refer to anything
 defined in the base class by prepending `this`, so for example, to update
 the size, you can do
 
-```
+```c++
 this->size += 1;
 ```
 

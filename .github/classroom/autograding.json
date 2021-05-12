@@ -59,7 +59,7 @@
       "comparison": "included",
       "timeout": 10,
       "points": 15
-    }
+    },
     {
       "name": "task 5 deleteValue() mutator",
       "setup": "make",
