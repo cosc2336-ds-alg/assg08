@@ -314,8 +314,8 @@ Prepending to the front of a linked list is pretty similar to the task
    - Initialize the nodes value to the input value given for the
      `insertBack()` function.
    - Also initialize the nodes `next` pointer to point to `nullptr`,
-     since this node will become the new `back` node of the linked
-     list.
+     this node could end up being the only node on the list, so you
+	 need to insure it points to `nullptr` if that happens.
 2. Test if the list is empty or not, you should reuse the `isEmpty()`
    member function to test this.
    - If the list is not empty, then prepend the new node by linking
