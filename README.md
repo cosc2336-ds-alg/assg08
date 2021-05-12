@@ -89,7 +89,7 @@ all items up 1 index in array, before we can prepend the item,
 $\mathcal{O}(n)$.  We followed the Malik ADT more for these functions,
 so they are now called `insertFront()` and `insertBack()`, and there
 are corresponding methods to access the front or back item named
-`getFront()` and `getBack()` respecively.  We also left in the
+`getFront()` and `getBack()` respectively.  We also left in the
 overloaded indexing operator as part of the `List` ADT, so that you
 could get a reference to an item at a particular index of the array
 (and even change the value of the item).  This operation is
@@ -417,18 +417,18 @@ internal nodes.
    1 or 2 values. In all cases, if there are any values that still
    need to be removed, they will not be the first or last node, so in
    that case the node will be of size 3 or larger.
-  - Iterate through the list keeping track of the previous node of the
-    node being tested.
-  - If the node being tested contains the value, it needs to be
-    removed.
-  - Make a temporary pointer to the node to be deleted.
-  - Re-point the previous nodes `next` pointer to the node after the
-    one being removed.
-  - It is now safe to `delete` / deallocate the node now that is being
-    removed.
-  - The previous pointer now has a different node after it, continue
-    iterating checking the new next node to see if it should be
-    removed or not.
+   - Iterate through the list keeping track of the previous node of the
+     node being tested.
+   - If the node being tested contains the value, it needs to be
+     removed.
+   - Make a temporary pointer to the node to be deleted.
+   - Re-point the previous nodes `next` pointer to the node after the
+     one being removed.
+   - It is now safe to `delete` / deallocate the node now that is being
+     removed.
+   - The previous pointer now has a different node after it, continue
+     iterating checking the new next node to see if it should be
+     removed or not.
 
 Also we didn't mention above but it is a considered an error if
 an attempt is made to `deleteValue()` and no values are found in
