@@ -16,18 +16,16 @@
  * the catch2 unit test framework to define the test cases and test
  * assertions.
  */
-#include <iostream>
-#include "catch.hpp"
 #include "AList.hpp"
-#include "ListIterator.hpp"
 #include "ListException.hpp"
+#include "ListIterator.hpp"
+#include "catch.hpp"
+#include <iostream>
 using namespace std;
-
 
 /** Test AList<int> concrete array implementation of list of integers
  */
-TEST_CASE("AList<int> test integer list concrete array implementation",
-          "[task0]")
+TEST_CASE("AList<int> test integer list concrete array implementation", "[task0]")
 {
   SECTION("test empty list is empty")
   {
@@ -35,8 +33,8 @@ TEST_CASE("AList<int> test integer list concrete array implementation",
 
     // empty lists should be empty
     CHECK(empty.getSize() == 0);
-    CHECK(empty.getAllocationSize() == 0);    // only for AList<>
-    CHECK(empty.isEmpty() );
+    CHECK(empty.getAllocationSize() == 0); // only for AList<>
+    CHECK(empty.isEmpty());
     CHECK(empty.str() == "<list> size: 0 [ ]");
 
     // empty lists should compare as being equal
@@ -52,8 +50,8 @@ TEST_CASE("AList<int> test integer list concrete array implementation",
     // empty list can be cleared and is still empty
     empty.clear();
     CHECK(empty.getSize() == 0);
-    CHECK(empty.getAllocationSize() == 0);    // only for AList<>
-    CHECK(empty.isEmpty() );
+    CHECK(empty.getAllocationSize() == 0); // only for AList<>
+    CHECK(empty.isEmpty());
     CHECK(empty.str() == "<list> size: 0 [ ]");
   }
 
@@ -64,8 +62,8 @@ TEST_CASE("AList<int> test integer list concrete array implementation",
 
     // nonempty list should not be empty
     CHECK(list.getSize() == 5);
-    CHECK(list.getAllocationSize() == 5);    // only for AList<>
-    CHECK_FALSE(list.isEmpty() );
+    CHECK(list.getAllocationSize() == 5); // only for AList<>
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 5 [ 1, 3, -2, -4, 7 ]");
 
     // test access to front and back
@@ -79,7 +77,7 @@ TEST_CASE("AList<int> test integer list concrete array implementation",
     CHECK(list[3] == -4);
     CHECK(list[4] == 7);
     CHECK_THROWS_AS(list[-1], ListMemoryBoundsException);
-    CHECK_THROWS_AS(list[5],  ListMemoryBoundsException);
+    CHECK_THROWS_AS(list[5], ListMemoryBoundsException);
     list[2] = 42;
     CHECK(list[2] == 42);
     CHECK(list.str() == "<list> size: 5 [ 1, 3, 42, -4, 7 ]");
@@ -87,28 +85,28 @@ TEST_CASE("AList<int> test integer list concrete array implementation",
     // test inserting on list, and that list allocation grows as expected
     list.insertBack(22);
     CHECK(list.getSize() == 6);
-    CHECK(list.getAllocationSize() == 10);    // only for AList<>
+    CHECK(list.getAllocationSize() == 10); // only for AList<>
     CHECK(list.getFront() == 1);
     CHECK(list.getBack() == 22);
     CHECK(list.str() == "<list> size: 6 [ 1, 3, 42, -4, 7, 22 ]");
 
     list >> 38;
     CHECK(list.getSize() == 7);
-    CHECK(list.getAllocationSize() == 10);    // only for AList<>
+    CHECK(list.getAllocationSize() == 10); // only for AList<>
     CHECK(list.getFront() == 1);
     CHECK(list.getBack() == 38);
     CHECK(list.str() == "<list> size: 7 [ 1, 3, 42, -4, 7, 22, 38 ]");
 
     list.insertFront(-22);
     CHECK(list.getSize() == 8);
-    CHECK(list.getAllocationSize() == 10);    // only for AList<>
+    CHECK(list.getAllocationSize() == 10); // only for AList<>
     CHECK(list.getFront() == -22);
     CHECK(list.getBack() == 38);
     CHECK(list.str() == "<list> size: 8 [ -22, 1, 3, 42, -4, 7, 22, 38 ]");
 
     list << -38;
     CHECK(list.getSize() == 9);
-    CHECK(list.getAllocationSize() == 10);    // only for AList<>
+    CHECK(list.getAllocationSize() == 10); // only for AList<>
     CHECK(list.getFront() == -38);
     CHECK(list.getBack() == 38);
     CHECK(list.str() == "<list> size: 9 [ -38, -22, 1, 3, 42, -4, 7, 22, 38 ]");
@@ -147,13 +145,13 @@ TEST_CASE("AList<int> test integer list concrete array implementation",
 
     // list is not empty before clear
     CHECK(list.getSize() == 4);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 4 [ 3, 1, 4, 2 ]");
 
     // list is empty after clear
     list.clear();
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // cleared list should be equal to empty list
@@ -170,22 +168,22 @@ TEST_CASE("AList<int> test integer list concrete array implementation",
     // delete from list front with more than 1 item
     list.deleteFront();
     CHECK(list.getSize() == 2);
-    CHECK(list.getAllocationSize() == 3);    // only for AList<>
-    CHECK_FALSE(list.isEmpty() );
+    CHECK(list.getAllocationSize() == 3); // only for AList<>
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ 1, 4 ]");
 
     // delete from list front with more than 1 item
     list.deleteFront();
     CHECK(list.getSize() == 1);
-    CHECK(list.getAllocationSize() == 3);    // only for AList<>
-    CHECK_FALSE(list.isEmpty() );
+    CHECK(list.getAllocationSize() == 3); // only for AList<>
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ 4 ]");
 
     // delete from list front with 1 item, lists becomes empty
     list.deleteFront();
     CHECK(list.getSize() == 0);
-    CHECK(list.getAllocationSize() == 3);    // only for AList<>
-    CHECK(list.isEmpty() );
+    CHECK(list.getAllocationSize() == 3); // only for AList<>
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // deleting from front of empty list should complain
@@ -200,22 +198,22 @@ TEST_CASE("AList<int> test integer list concrete array implementation",
     // delete from list back with more than 1 item
     list.deleteBack();
     CHECK(list.getSize() == 2);
-    CHECK(list.getAllocationSize() == 3);    // only for AList<>
-    CHECK_FALSE(list.isEmpty() );
+    CHECK(list.getAllocationSize() == 3); // only for AList<>
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ 3, 1 ]");
 
     // delete from list back with more than 1 item
     list.deleteBack();
     CHECK(list.getSize() == 1);
-    CHECK(list.getAllocationSize() == 3);    // only for AList<>
-    CHECK_FALSE(list.isEmpty() );
+    CHECK(list.getAllocationSize() == 3); // only for AList<>
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ 3 ]");
 
     // delete from list back with 1 item, lists becomes empty
     list.deleteBack();
     CHECK(list.getSize() == 0);
-    CHECK(list.getAllocationSize() == 3);    // only for AList<>
-    CHECK(list.isEmpty() );
+    CHECK(list.getAllocationSize() == 3); // only for AList<>
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // deleting from back of empty list should complain
@@ -250,15 +248,14 @@ TEST_CASE("AList<int> test integer list concrete array implementation",
     CHECK(list.getSize() == 1);
     CHECK(list.getFront() == 1);
     CHECK(list.getBack() == 1);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ 1 ]");
 
     // test delete and list becomes empty
     list.deleteIndex(0);
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
-
   }
 
   SECTION("test deletion of values from list")
@@ -295,13 +292,13 @@ TEST_CASE("AList<int> test integer list concrete array implementation",
     CHECK(list.getSize() == 2);
     CHECK(list.getFront() == 3);
     CHECK(list.getBack() == 3);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ 3, 3 ]");
 
     // test delete two values, list is now empty
     list.deleteValue(3);
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
   }
 
@@ -337,11 +334,9 @@ TEST_CASE("AList<int> test integer list concrete array implementation",
   }
 }
 
-
 /** Test AList<string> concrete array implementation of list of strings
  */
-TEST_CASE("AList<string> test string list concrete array implementation",
-          "[task0]")
+TEST_CASE("AList<string> test string list concrete array implementation", "[task0]")
 {
   SECTION("test empty list is empty")
   {
@@ -349,8 +344,8 @@ TEST_CASE("AList<string> test string list concrete array implementation",
 
     // empty lists should be empty
     CHECK(empty.getSize() == 0);
-    CHECK(empty.getAllocationSize() == 0);    // only for AList<>
-    CHECK(empty.isEmpty() );
+    CHECK(empty.getAllocationSize() == 0); // only for AList<>
+    CHECK(empty.isEmpty());
     CHECK(empty.str() == "<list> size: 0 [ ]");
 
     // empty lists should compare as being equal
@@ -366,8 +361,8 @@ TEST_CASE("AList<string> test string list concrete array implementation",
     // empty list can be cleared and is still empty
     empty.clear();
     CHECK(empty.getSize() == 0);
-    CHECK(empty.getAllocationSize() == 0);    // only for AList<>
-    CHECK(empty.isEmpty() );
+    CHECK(empty.getAllocationSize() == 0); // only for AList<>
+    CHECK(empty.isEmpty());
     CHECK(empty.str() == "<list> size: 0 [ ]");
   }
 
@@ -378,8 +373,8 @@ TEST_CASE("AList<string> test string list concrete array implementation",
 
     // nonempty list should not be empty
     CHECK(list.getSize() == 5);
-    CHECK(list.getAllocationSize() == 5);    // only for AList<>
-    CHECK_FALSE(list.isEmpty() );
+    CHECK(list.getAllocationSize() == 5); // only for AList<>
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 5 [ alpha, charlie, bravo, delta, golf ]");
 
     // test access to front and back
@@ -393,7 +388,7 @@ TEST_CASE("AList<string> test string list concrete array implementation",
     CHECK(list[3] == "delta");
     CHECK(list[4] == "golf");
     CHECK_THROWS_AS(list[-1], ListMemoryBoundsException);
-    CHECK_THROWS_AS(list[5],  ListMemoryBoundsException);
+    CHECK_THROWS_AS(list[5], ListMemoryBoundsException);
     list[2] = "share-and-enjoy";
     CHECK(list[2] == "share-and-enjoy");
     CHECK(list.str() == "<list> size: 5 [ alpha, charlie, share-and-enjoy, delta, golf ]");
@@ -401,31 +396,32 @@ TEST_CASE("AList<string> test string list concrete array implementation",
     // test inserting on list, and that list allocation grows as expected
     list.insertBack("too-too");
     CHECK(list.getSize() == 6);
-    CHECK(list.getAllocationSize() == 10);    // only for AList<>
+    CHECK(list.getAllocationSize() == 10); // only for AList<>
     CHECK(list.getFront() == "alpha");
     CHECK(list.getBack() == "too-too");
     CHECK(list.str() == "<list> size: 6 [ alpha, charlie, share-and-enjoy, delta, golf, too-too ]");
 
     list >> "three-ait";
     CHECK(list.getSize() == 7);
-    CHECK(list.getAllocationSize() == 10);    // only for AList<>
+    CHECK(list.getAllocationSize() == 10); // only for AList<>
     CHECK(list.getFront() == "alpha");
     CHECK(list.getBack() == "three-ait");
     CHECK(list.str() == "<list> size: 7 [ alpha, charlie, share-and-enjoy, delta, golf, too-too, three-ait ]");
 
     list.insertFront("negative-too-too");
     CHECK(list.getSize() == 8);
-    CHECK(list.getAllocationSize() == 10);    // only for AList<>
+    CHECK(list.getAllocationSize() == 10); // only for AList<>
     CHECK(list.getFront() == "negative-too-too");
     CHECK(list.getBack() == "three-ait");
     CHECK(list.str() == "<list> size: 8 [ negative-too-too, alpha, charlie, share-and-enjoy, delta, golf, too-too, three-ait ]");
 
     list << "negative-three-ait";
     CHECK(list.getSize() == 9);
-    CHECK(list.getAllocationSize() == 10);    // only for AList<>
+    CHECK(list.getAllocationSize() == 10); // only for AList<>
     CHECK(list.getFront() == "negative-three-ait");
     CHECK(list.getBack() == "three-ait");
-    CHECK(list.str() == "<list> size: 9 [ negative-three-ait, negative-too-too, alpha, charlie, share-and-enjoy, delta, golf, too-too, three-ait ]");
+    CHECK(list.str() ==
+          "<list> size: 9 [ negative-three-ait, negative-too-too, alpha, charlie, share-and-enjoy, delta, golf, too-too, three-ait ]");
   }
 
   SECTION("test copy constructor")
@@ -461,13 +457,13 @@ TEST_CASE("AList<string> test string list concrete array implementation",
 
     // list is not empty before clear
     CHECK(list.getSize() == 4);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 4 [ charlie, alpha, delta, bravo ]");
 
     // list is empty after clear
     list.clear();
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // cleared list should be equal to empty list
@@ -484,22 +480,22 @@ TEST_CASE("AList<string> test string list concrete array implementation",
     // delete from list front with more than 1 item
     list.deleteFront();
     CHECK(list.getSize() == 2);
-    CHECK(list.getAllocationSize() == 3);    // only for AList<>
-    CHECK_FALSE(list.isEmpty() );
+    CHECK(list.getAllocationSize() == 3); // only for AList<>
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ alpha, delta ]");
 
     // delete from list front with more than 1 item
     list.deleteFront();
     CHECK(list.getSize() == 1);
-    CHECK(list.getAllocationSize() == 3);    // only for AList<>
-    CHECK_FALSE(list.isEmpty() );
+    CHECK(list.getAllocationSize() == 3); // only for AList<>
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ delta ]");
 
     // delete from list front with 1 item, lists becomes empty
     list.deleteFront();
     CHECK(list.getSize() == 0);
-    CHECK(list.getAllocationSize() == 3);    // only for AList<>
-    CHECK(list.isEmpty() );
+    CHECK(list.getAllocationSize() == 3); // only for AList<>
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // deleting from front of empty list should complain
@@ -514,22 +510,22 @@ TEST_CASE("AList<string> test string list concrete array implementation",
     // delete from list back with more than 1 item
     list.deleteBack();
     CHECK(list.getSize() == 2);
-    CHECK(list.getAllocationSize() == 3);    // only for AList<>
-    CHECK_FALSE(list.isEmpty() );
+    CHECK(list.getAllocationSize() == 3); // only for AList<>
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ charlie, alpha ]");
 
     // delete from list back with more than 1 item
     list.deleteBack();
     CHECK(list.getSize() == 1);
-    CHECK(list.getAllocationSize() == 3);    // only for AList<>
-    CHECK_FALSE(list.isEmpty() );
+    CHECK(list.getAllocationSize() == 3); // only for AList<>
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ charlie ]");
 
     // delete from list back with 1 item, lists becomes empty
     list.deleteBack();
     CHECK(list.getSize() == 0);
-    CHECK(list.getAllocationSize() == 3);    // only for AList<>
-    CHECK(list.isEmpty() );
+    CHECK(list.getAllocationSize() == 3); // only for AList<>
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // deleting from back of empty list should complain
@@ -564,15 +560,14 @@ TEST_CASE("AList<string> test string list concrete array implementation",
     CHECK(list.getSize() == 1);
     CHECK(list.getFront() == "alpha");
     CHECK(list.getBack() == "alpha");
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ alpha ]");
 
     // test delete and list becomes empty
     list.deleteIndex(0);
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
-
   }
 
   SECTION("test deletion of values from list")
@@ -609,13 +604,13 @@ TEST_CASE("AList<string> test string list concrete array implementation",
     CHECK(list.getSize() == 2);
     CHECK(list.getFront() == "charlie");
     CHECK(list.getBack() == "charlie");
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ charlie, charlie ]");
 
     // test delete two values, list is now empty
     list.deleteValue("charlie");
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
   }
 

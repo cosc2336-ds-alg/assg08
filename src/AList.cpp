@@ -15,14 +15,13 @@
  * memory allocation if it needs to grow.  Insertion in the middle or
  * front still requires shifting of items, so it is O(n).
  */
-#include <iostream>
-#include <sstream>
-#include <string>
 #include "AList.hpp"
 #include "AListIterator.hpp"
 #include "ListException.hpp"
+#include <iostream>
+#include <sstream>
+#include <string>
 using namespace std;
-
 
 /** grow list
  * Private member method that will increase the memory allocation if
@@ -33,7 +32,7 @@ using namespace std;
  * need to grow the list, to ensure we have enough allocated capacity
  * to accommodate the growth.
  */
-template <class T>
+template<class T>
 void AList<T>::growListIfNeeded()
 {
   // if size is still less than what we have allocated, we still have room
@@ -73,12 +72,11 @@ void AList<T>::growListIfNeeded()
   values = newValues;
 }
 
-
 /** default constructor
  * Construct an empty list.  The empty list will have no allocated memory
  * nor any values.
  */
-template <class T>
+template<class T>
 AList<T>::AList()
 {
   // Empty list has no values nor any allocated memory
@@ -87,7 +85,6 @@ AList<T>::AList()
   this->allocationSize = 0;
   values = nullptr;
 }
-
 
 /** standard constructor
  * Construct a list of integer values from a (statically) defined and
@@ -100,7 +97,7 @@ AList<T>::AList()
  * @param values The (static) array of string values to use to construct
  *   this List values with.
  */
-template <class T>
+template<class T>
 AList<T>::AList(int size, T values[])
 {
   // dynamically allocate a block of memory on the heap large enough to copy
@@ -116,7 +113,6 @@ AList<T>::AList(int size, T values[])
   }
 }
 
-
 /** copy constructor
  * Provide a copy constructor for the List class.  A copy constructor
  * will be invoked whenver you assign one instance of a List to another.
@@ -129,7 +125,7 @@ AList<T>::AList(int size, T values[])
  * @param list The other List type we are to make a copy of in this
  *   constructor.
  */
-template <class T>
+template<class T>
 AList<T>::AList(const AList<T>& list)
 {
   // copy the size of the existing list and allocate memory to hold
@@ -146,21 +142,19 @@ AList<T>::AList(const AList<T>& list)
   }
 }
 
-
 /** destructor
  * Destructor for the List class.  A concrete List implementation must
  * provide a clear() method to clear all items and safely deallocate any
  * memory that the concrete instance is using.  Invoke the clear
  * of the concrete subclass to perform the destruction.
  */
-template <class T>
+template<class T>
 AList<T>::~AList()
 {
   // call clear to do actual work to deallocate any allocation
   // before we destruct
   this->clear();
 }
-
 
 /** allocation size accessor
  * Accessor method to get the current amount of memory allocated
@@ -169,12 +163,11 @@ AList<T>::~AList()
  * @returns int Returns the current allocation size of the
  *   list of integers.
  */
-template <class T>
+template<class T>
 int AList<T>::getAllocationSize() const
 {
   return allocationSize;
 }
-
 
 /** access front of list
  * Accessor method to get a copy of the item currently
@@ -187,7 +180,7 @@ int AList<T>::getAllocationSize() const
  *   access front item of an empty list, this exception
  *   is generated and thrown instead.
  */
-template <class T>
+template<class T>
 T AList<T>::getFront() const
 {
   // make sure list is not empty before we try and access
@@ -205,7 +198,6 @@ T AList<T>::getFront() const
   return values[0];
 }
 
-
 /** access back of list
  * Accessor method to get a copy of the item currently
  * at the back of this list.
@@ -217,7 +209,7 @@ T AList<T>::getFront() const
  *   access back item of an empty list, this exception
  *   is generated and thrown instead.
  */
-template <class T>
+template<class T>
 T AList<T>::getBack() const
 {
   // make sure list is not empty before we try and access
@@ -235,7 +227,6 @@ T AList<T>::getBack() const
   return values[this->size - 1];
 }
 
-
 /** List to string
  * Accessor method to construct and return a string representation
  * of the current values and status of this List instance.
@@ -243,14 +234,13 @@ T AList<T>::getBack() const
  * @returns string Returns the string constructed with the information
  *   about this List.
  */
-template <class T>
+template<class T>
 string AList<T>::str() const
 {
   ostringstream out;
 
   // stream list information into the output stream
-  out << "<list> size: " << this->size
-      << " [ ";
+  out << "<list> size: " << this->size << " [ ";
 
   // stream the current value sof the list to the output stream
   for (int index = 0; index < this->size; index++)
@@ -273,7 +263,6 @@ string AList<T>::str() const
   return out.str();
 }
 
-
 /** boolean equals operator
  * Check if this List is equal to the right hand side (rhs)
  * list.  The lists are equal if their sizes are equal, and if
@@ -284,7 +273,7 @@ string AList<T>::str() const
  *
  * @returns bool true if the lists are equal, false if the are not.
  */
-template <class T>
+template<class T>
 bool AList<T>::operator==(const List<T>& rhs) const
 {
   // first the lists have to be of the same size, or else they
@@ -310,7 +299,6 @@ bool AList<T>::operator==(const List<T>& rhs) const
   return true;
 }
 
-
 /** indexing operator
  * Provide a way to index individual values in our private
  * internal array of integers.  This allows code to, for the
@@ -327,16 +315,15 @@ bool AList<T>::operator==(const List<T>& rhs) const
  * @throws ListMemoryBoundsException if a request for an index beyond
  *   the end of the array (or less than 0) is made.
  */
-template <class T>
+template<class T>
 T& AList<T>::operator[](int index) const
 {
   // first check that the requsted index is legally
   // within the bounds of the current size of our list
-  if ( (index < 0) or (index >= this->size)  )
+  if ((index < 0) or (index >= this->size))
   {
     ostringstream out;
-    out << "Error: <AList::operator[]> illegal bounds access, list size: " << this->size
-        << " tried to access index address: " << index;
+    out << "Error: <AList::operator[]> illegal bounds access, list size: " << this->size << " tried to access index address: " << index;
 
     throw ListMemoryBoundsException(out.str());
   }
@@ -344,7 +331,6 @@ T& AList<T>::operator[](int index) const
   // otherwise it is safe to return the reference to this value
   return values[index];
 }
-
 
 /** clear out list
  * Clear or empty out the list.  Return the list back
@@ -355,7 +341,7 @@ T& AList<T>::operator[](int index) const
  *
  * @returns bool true if the lists are equal, false if the are not.
  */
-template <class T>
+template<class T>
 void AList<T>::clear()
 {
   // if values is not null, it points to a dynamic block of memory, so
@@ -371,7 +357,6 @@ void AList<T>::clear()
   allocationSize = 0;
 }
 
-
 /** insert value on back
  * Append the indicated value to the end of this List
  * of values.  This method will grow the list allocation if
@@ -384,7 +369,7 @@ void AList<T>::clear()
  * @returns List& Returns a reference to this List instance, so that
  *   the result can be used in further List operator expressions.
  */
-template <class T>
+template<class T>
 List<T>& AList<T>::insertBack(const T& value)
 {
   // first check and grow the memory allocation if needed
@@ -400,7 +385,6 @@ List<T>& AList<T>::insertBack(const T& value)
   return *this;
 }
 
-
 /** overload operator>> to append
  * Overload the operator>> to perform append operation.  Implementation
  * is actually done by the insertBack() member function.
@@ -410,18 +394,17 @@ List<T>& AList<T>::insertBack(const T& value)
  * @returns List& Returns a reference to this List instance, so that
  *   the result can be used in further List operator expressions.
  */
-template <class T>
+template<class T>
 List<T>& AList<T>::operator>>(const T& value)
 {
   return insertBack(value);
 }
 
-
 /** delete back item
  * Delete the item from the back of the list.  This is a
  * trivial O(1) operation for an array based implementation.
  */
-template <class T>
+template<class T>
 void AList<T>::deleteBack()
 {
   // make sure list is not empty before we try and access
@@ -439,7 +422,6 @@ void AList<T>::deleteBack()
   this->size -= 1;
 }
 
-
 /** insert value on front
  * Prepend the indicated value to the beginning of this List
  * of values.  This method will grow the list allocation if
@@ -452,7 +434,7 @@ void AList<T>::deleteBack()
  * @returns List& Returns a reference to this List instance, so that
  *   the result can be used in further List operator expressions.
  */
-template <class T>
+template<class T>
 List<T>& AList<T>::insertFront(const T& value)
 {
   // first check and grow the memory allocation if needed
@@ -476,7 +458,6 @@ List<T>& AList<T>::insertFront(const T& value)
   return *this;
 }
 
-
 /** overload operator<< to prepend
  * Overload the operator<< to perform prepend operation.  Implementation
  * is actually done by the insertFront() member function.
@@ -486,19 +467,18 @@ List<T>& AList<T>::insertFront(const T& value)
  * @returns List& Returns a reference to this List instance, so that
  *   the result can be used in further List operator expressions.
  */
-template <class T>
+template<class T>
 List<T>& AList<T>::operator<<(const T& value)
 {
   return insertFront(value);
 }
-
 
 /** delete front item
  * Delete the item from the front of the list.  This operation
  * is expensive for an array as we have to shift all items
  * back down, giving O(n) performance to remove the front item.
  */
-template <class T>
+template<class T>
 void AList<T>::deleteFront()
 {
   // make sure list is not empty before we try and access
@@ -522,7 +502,6 @@ void AList<T>::deleteFront()
   this->size -= 1;
 }
 
-
 /** delete value(s)
  * Delete the value from the list.  This method will delete all
  * instances of the value from this list that it finds.  If the list
@@ -534,7 +513,7 @@ void AList<T>::deleteFront()
  *   that does not exist, we thrown an exception instead of silently
  *   ignoring this condition.
  */
-template <class T>
+template<class T>
 void AList<T>::deleteValue(const T& value)
 {
   // flag so we can tell if we succeeded at least one time
@@ -559,13 +538,11 @@ void AList<T>::deleteValue(const T& value)
   if (not foundValue)
   {
     ostringstream out;
-    out << "Error: <AList::deleteValue> asked to delete value: " << value
-        << " but this value was not currently in the list";
+    out << "Error: <AList::deleteValue> asked to delete value: " << value << " but this value was not currently in the list";
 
     throw ListValueNotFoundException(out.str());
   }
 }
-
 
 /** delete value at index
  * Delete the value from the indicated index in this
@@ -577,23 +554,22 @@ void AList<T>::deleteValue(const T& value)
  *   beginning of the array or past the end we will throw a bounds
  *   exception for the illegal memory access attempt.
  */
-template <class T>
+template<class T>
 void AList<T>::deleteIndex(int index)
 {
   // first check that the requsted index is legally
   // within the bounds of the current size of our list
-  if ( (index < 0) or (index >= this->size)  )
+  if ((index < 0) or (index >= this->size))
   {
     ostringstream out;
-    out << "Error: <AList::deleteIndex> illegal bounds access, list size: " << this->size
-        << " tried to access index address: " << index;
+    out << "Error: <AList::deleteIndex> illegal bounds access, list size: " << this->size << " tried to access index address: " << index;
 
     throw ListMemoryBoundsException(out.str());
   }
 
   // otherwise need to delete the item by shifting all items down from
   // this position to the end of the array by 1 index
-  for ( ; index < this->size - 1; index++)
+  for (; index < this->size - 1; index++)
   {
     values[index] = values[index + 1];
   }
@@ -602,7 +578,6 @@ void AList<T>::deleteIndex(int index)
   this->size--;
 }
 
-
 /** begin iterator
  * Create and return a ListIterator pointing to the beginning of
  * this list of items, ready to be iterated over.
@@ -610,15 +585,14 @@ void AList<T>::deleteIndex(int index)
  * @returns ListIterator<T> returns a new instance of type
  *   ListIterator<T> that keeps track of iterating over the list items.
  */
-template <class T>
+template<class T>
 ListIterator<T> AList<T>::begin()
 {
-  //AListIterator<T>* beginItr = new AListIterator<T>(0, values);
-  //return *beginItr;
+  // AListIterator<T>* beginItr = new AListIterator<T>(0, values);
+  // return *beginItr;
   AListIterator<T> beginItr(0, values);
   return beginItr;
 }
-
 
 /** end iterator
  * Return a ListIterator pointing to an index which is
@@ -629,15 +603,14 @@ ListIterator<T> AList<T>::begin()
  *   ListIterator<T> that points to the end index indicator
  *   of the list.
  */
-template <class T>
+template<class T>
 ListIterator<T> AList<T>::end()
 {
-  //AListIterator<T>* endItr = new AListIterator<T>(size, values);
-  //return *endItr;
+  // AListIterator<T>* endItr = new AListIterator<T>(size, values);
+  // return *endItr;
   AListIterator<T> endItr(this->size, values);
   return endItr;
 }
-
 
 /** constant begin iterator
  * Create and return a ListIterator pointing to the beginning of
@@ -646,13 +619,12 @@ ListIterator<T> AList<T>::end()
  * @returns ListIterator<T> returns a new instance of type
  *   ListIterator<T> that keeps track of iterating over the list items.
  */
-template <class T>
+template<class T>
 ListIterator<T> AList<T>::cbegin() const
 {
   AListIterator<T> beginItr(0, values);
   return beginItr;
 }
-
 
 /** constant end iterator
  * Return a ListIterator pointing to an index which is
@@ -663,13 +635,12 @@ ListIterator<T> AList<T>::cbegin() const
  *   ListIterator<T> that points to the end index indicator
  *   of the list.
  */
-template <class T>
+template<class T>
 ListIterator<T> AList<T>::cend() const
 {
   AListIterator<T> endItr(this->size, values);
   return endItr;
 }
-
 
 /**
  * @brief Cause specific instance compilations

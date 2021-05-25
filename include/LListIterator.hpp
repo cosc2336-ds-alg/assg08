@@ -12,11 +12,10 @@
  */
 #ifndef _LLIST_ITERATOR_HPP_
 #define _LLIST_ITERATOR_HPP_
-#include "Node.hpp"
-#include "ListIterator.hpp"
 #include "LList.hpp"
+#include "ListIterator.hpp"
+#include "Node.hpp"
 using namespace std;
-
 
 /** @class LListIterator
  * @brief The ListIterator interface
@@ -25,7 +24,7 @@ using namespace std;
  * These allow us to iterate over List<T> objects in the
  * standard and expected way for C++ template classes.
  */
-template <class T>
+template<class T>
 class LListIterator : public ListIterator<T>
 {
 private:
@@ -45,5 +44,4 @@ public:
   bool operator!=(const LListIterator<T>& rhs) const;
 };
 
-
-#endif  // define _LLIST_ITERATOR_HPP_
+#endif // define _LLIST_ITERATOR_HPP_

@@ -17,7 +17,6 @@
 #include <iostream>
 using namespace std;
 
-
 /** @class ListIterator
  * @brief The ListIterator interface
  *
@@ -25,11 +24,10 @@ using namespace std;
  * These allow us to iterate over List<T> objects in the
  * standard and expected way for C++ template classes.
  */
-template <class T>
+template<class T>
 class ListIterator
 {
 private:
-
 public:
   // constructors and descturcotr
   ListIterator();
@@ -41,5 +39,4 @@ public:
   virtual bool operator!=(const ListIterator<T>& rhs) const;
 };
 
-
-#endif  // define _LIST_ITERATOR_HPP_
+#endif // define _LIST_ITERATOR_HPP_

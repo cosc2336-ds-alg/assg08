@@ -10,10 +10,9 @@
  * Implementall exception methods that can be generated and thrown by List
  * instances.
  */
-#include <string>
 #include "ListException.hpp"
+#include <string>
 using namespace std;
-
 
 /**
  * @brief ListEmptyException constructor
@@ -28,17 +27,13 @@ ListEmptyException::ListEmptyException(const string& message)
   this->message = message;
 }
 
-
 /**
  * @brief ListEmptyException destructor
  *
  * Destructor for exceptions used for our ListEmptyException
  * class.
  */
-ListEmptyException::~ListEmptyException()
-{
-}
-
+ListEmptyException::~ListEmptyException() {}
 
 /**
  * @brief ListEmptyException message
@@ -54,7 +49,6 @@ const char* ListEmptyException::what() const throw()
   return message.c_str();
 }
 
-
 /**
  * @brief ListMemoryBoundsException constructor
  *
@@ -68,17 +62,13 @@ ListMemoryBoundsException::ListMemoryBoundsException(const string& message)
   this->message = message;
 }
 
-
 /**
  * @brief ListMemoryBoundsException destructor
  *
  * Destructor for exceptions used for our ListMemoryBoundsException
  * class.
  */
-ListMemoryBoundsException::~ListMemoryBoundsException()
-{
-}
-
+ListMemoryBoundsException::~ListMemoryBoundsException() {}
 
 /**
  * @brief ListMemoryBoundsException message
@@ -94,7 +84,6 @@ const char* ListMemoryBoundsException::what() const throw()
   return message.c_str();
 }
 
-
 /**
  * @brief ListValueNotFoundException constructor
  *
@@ -108,17 +97,13 @@ ListValueNotFoundException::ListValueNotFoundException(const string& message)
   this->message = message;
 }
 
-
 /**
  * @brief ListValueNotFoundException destructor
  *
  * Destructor for exceptions used for our ListValueNotFoundException
  * class.
  */
-ListValueNotFoundException::~ListValueNotFoundException()
-{
-}
-
+ListValueNotFoundException::~ListValueNotFoundException() {}
 
 /**
  * @brief ListValueNotFoundException message

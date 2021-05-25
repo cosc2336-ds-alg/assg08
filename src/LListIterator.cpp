@@ -10,21 +10,19 @@
  * Implement the ListIterator abstraction to provide for
  * standard iteration over concrete LList<T> instances.
  */
-#include "LList.hpp"
 #include "LListIterator.hpp"
+#include "LList.hpp"
 using namespace std;
-
 
 /** default constructor
  * Default constructor, iterator will not be iterating over
  * anything if constructed using the default constructor.
  */
-template <class T>
+template<class T>
 LListIterator<T>::LListIterator()
 {
   current = nullptr;
 }
-
 
 /** standard constructor
  * Standard constructor, we are given a pointer to the node
@@ -33,12 +31,11 @@ LListIterator<T>::LListIterator()
  * @param ptr A pointer to the Node<T> item at start of
  *   this iteration of the linked list LList<T> instance.
  */
-template <class T>
+template<class T>
 LListIterator<T>::LListIterator(Node<T>* ptr)
 {
   this->current = ptr;
 }
-
 
 /**  overload dereference operator
  * Overload the dereference operator* for the LListIterator.
@@ -50,7 +47,7 @@ LListIterator<T>::LListIterator(Node<T>* ptr)
  * @returns T Returns the value currently being pointed to by
  *   this iterator.
  */
-template <class T>
+template<class T>
 T LListIterator<T>::operator*()
 {
   // TODO: should we be checking case where current is not a valid
@@ -58,7 +55,6 @@ T LListIterator<T>::operator*()
   // TODO: should we be checking for empty list cases
   return current->value;
 }
-
 
 /** overload increment operator
  * Overload the post increment operator++.  This is defined to cause the
@@ -68,14 +64,13 @@ T LListIterator<T>::operator*()
  *   the iterator to the next value of the list we are iterating over.
  *
  */
-template <class T>
+template<class T>
 ListIterator<T>& LListIterator<T>::operator++()
 {
   current = current->next;
 
   return *this;
 }
-
 
 /**  overload boolean equality operator
  * Overload the boolean operator== to check for equivalence.  This is
@@ -87,12 +82,11 @@ ListIterator<T>& LListIterator<T>::operator++()
  * @returns bool True if the iterators are both pointing to the same
  *   value of the iteration, false otherwise.
  */
-template <class T>
+template<class T>
 bool LListIterator<T>::operator==(const LListIterator<T>& rhs) const
 {
   return current == rhs.current;
 }
-
 
 /**  overload boolean not equal operator
  * Overload the boolean operator!= to check for nonequivalance.  This is
@@ -104,12 +98,11 @@ bool LListIterator<T>::operator==(const LListIterator<T>& rhs) const
  * @returns bool True if the iterators are not pointing to the same
  *   value of the iteration, false otherwise.
  */
-template <class T>
+template<class T>
 bool LListIterator<T>::operator!=(const LListIterator<T>& rhs) const
 {
   return current == rhs.current;
 }
-
 
 /**
  * @brief Cause specific instance compilations

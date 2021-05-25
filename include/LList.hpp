@@ -16,12 +16,11 @@
  */
 #ifndef _LLIST_HPP_
 #define _LLIST_HPP_
-#include <string>
-#include "Node.hpp"
-#include "List.hpp"
 #include "LListIterator.hpp"
+#include "List.hpp"
+#include "Node.hpp"
+#include <string>
 using namespace std;
-
 
 /** @class LList
  * @brief The LList concrete array based implemention of the
@@ -30,7 +29,7 @@ using namespace std;
  * Concrete implementation of List abstraction using an
  * array based implementation.
  */
-template <class T>
+template<class T>
 class LList : public List<T>
 {
 private:
@@ -65,5 +64,4 @@ public:
   ListIterator<T> cend() const;
 };
 
-
-#endif  // define _LLIST_HPP_
+#endif // define _LLIST_HPP_

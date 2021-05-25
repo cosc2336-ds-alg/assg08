@@ -13,22 +13,20 @@
  * Implementation of List base class concrete member
  * functions and friend functions.
  */
-#include <iostream>
 #include "List.hpp"
+#include <iostream>
 using namespace std;
-
 
 /** size accessor
  * Accessor method to get the current size of this List of integers.
  *
  * @returns int Returns the current size of the list of integers.
  */
-template <class T>
+template<class T>
 int List<T>::getSize() const
 {
   return size;
 }
-
 
 /** check if empty list
  * Accessor method to test if the list is currently
@@ -37,14 +35,13 @@ int List<T>::getSize() const
  * @returns bool Returns true if the list is currently
  *   empty, or false if it has 1 or more items.
  */
-template <class T>
+template<class T>
 bool List<T>::isEmpty() const
 {
   // can simply test size, if it is equal to 0, then it is true the
   // list is empty, if it is not equal, then the answer is false
   return size == 0;
 }
-
 
 /** List output operator
  *@brief overload output stream operator for List type.
@@ -64,7 +61,7 @@ bool List<T>::isEmpty() const
  *   output stream, but after we  have inserted current List
  *   values / representation onto the stream
  */
-template <typename U>
+template<typename U>
 ostream& operator<<(ostream& out, const List<U>& rhs)
 {
   // reuse List str() method to stream to output stream
@@ -73,7 +70,6 @@ ostream& operator<<(ostream& out, const List<U>& rhs)
   // return the modified output stream as our result
   return out;
 }
-
 
 /**
  * @brief Cause specific instance compilations
@@ -86,9 +82,8 @@ ostream& operator<<(ostream& out, const List<U>& rhs)
  * https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl
  * https://isocpp.org/wiki/faq/templates#separate-template-class-defn-from-decl
  */
-template ostream & operator<< <int>(ostream&, const List<int>&);
-template ostream & operator<< <string>(ostream&, const List<string>&);
-
+template ostream& operator<<<int>(ostream&, const List<int>&);
+template ostream& operator<<<string>(ostream&, const List<string>&);
 
 /**
  * @brief Cause specific instance compilations

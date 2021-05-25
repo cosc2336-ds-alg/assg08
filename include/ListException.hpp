@@ -15,7 +15,6 @@
 #include <string>
 using namespace std;
 
-
 /** @class ListEmptyException
  * @brief List Empty Exception for the List class.
  *
@@ -36,7 +35,6 @@ private:
   string message;
 };
 
-
 /** @class ListMemoryBoundsException
  * @brief Memory Bounds Exception for the List class.
  *
@@ -55,7 +53,6 @@ private:
   /// Stores the particular message describing what caused the exception.
   string message;
 };
-
 
 /** @class ListValueNotFoundException
  * @brief Search for a value expected in list failed.

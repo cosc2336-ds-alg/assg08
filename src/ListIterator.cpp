@@ -13,16 +13,14 @@
 #include "ListIterator.hpp"
 using namespace std;
 
-
 /** default constructor
  * Default constructor, iterator will not be iterating over
  * anything if constructed using the default constructor.
  */
-template <class T>
+template<class T>
 ListIterator<T>::ListIterator()
 {
 }
-
 
 /**  overload dereference operator
  * Overload the dereference operator* for the ListIterator.
@@ -34,12 +32,11 @@ ListIterator<T>::ListIterator()
  * @returns T Returns the value currently being pointed to by
  *   this iterator.
  */
-template <class T>
+template<class T>
 T ListIterator<T>::operator*()
 {
   return T();
 }
-
 
 /** overload increment operator
  * Overload the post increment operator++.  This is defined to cause the
@@ -49,12 +46,11 @@ T ListIterator<T>::operator*()
  *   the iterator to the next value of the list we are iterating over.
  *
  */
-template <class T>
+template<class T>
 ListIterator<T>& ListIterator<T>::operator++()
 {
   return *this;
 }
-
 
 /**  overload boolean equality operator
  * Overload the boolean operator== to check for equivalence.  This is
@@ -66,12 +62,11 @@ ListIterator<T>& ListIterator<T>::operator++()
  * @returns bool True if the iterators are both pointing to the same
  *   value of the iteration, false otherwise.
  */
-template <class T>
+template<class T>
 bool ListIterator<T>::operator==(const ListIterator<T>& rhs) const
 {
   return false;
 }
-
 
 /**  overload boolean not equal operator
  * Overload the boolean operator!= to check for nonequivalance.  This is
@@ -83,12 +78,11 @@ bool ListIterator<T>::operator==(const ListIterator<T>& rhs) const
  * @returns bool True if the iterators are not pointing to the same
  *   value of the iteration, false otherwise.
  */
-template <class T>
+template<class T>
 bool ListIterator<T>::operator!=(const ListIterator<T>& rhs) const
 {
   return false;
 }
-
 
 /**
  * @brief Cause specific instance compilations

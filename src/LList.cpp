@@ -16,20 +16,19 @@
  * if it needs to grow.  Insertion in the middle or front
  * still requires shifting of items, so it is O(n).
  */
-#include <iostream>
-#include <sstream>
-#include <string>
 #include "LList.hpp"
 #include "LListIterator.hpp"
 #include "ListException.hpp"
+#include <iostream>
+#include <sstream>
+#include <string>
 using namespace std;
-
 
 /** default constructor
  * Construct an empty list.  The empty list will have no allocated memory
  * nor any values.
  */
-template <class T>
+template<class T>
 LList<T>::LList()
 {
   // Empty list has size 0 and both front and back are null
@@ -37,7 +36,6 @@ LList<T>::LList()
   front = nullptr;
   back = nullptr;
 }
-
 
 /** standard constructor
  * Construct a list of integer values from a (statically) defined and
@@ -50,7 +48,7 @@ LList<T>::LList()
  * @param values The (static) array of string values to use to construct
  *   this List values with.
  */
-template <class T>
+template<class T>
 LList<T>::LList(int size, T values[])
 {
   // Make sure list is empty before copying values from array.
@@ -65,10 +63,9 @@ LList<T>::LList(int size, T values[])
   {
     // uncomment this after implementing insertBack() to enable its
     // reuse to correctly implement the array based constructor
-    //insertBack(values[index]);
+    // insertBack(values[index]);
   }
 }
-
 
 /** copy constructor
  * Provide a copy constructor for the List class.  A copy constructor
@@ -82,7 +79,7 @@ LList<T>::LList(int size, T values[])
  * @param list The other List type we are to make a copy of in this
  *   constructor.
  */
-template <class T>
+template<class T>
 LList<T>::LList(const LList<T>& list)
 {
   // Make sure list is empty before copying values from other list.
@@ -100,12 +97,11 @@ LList<T>::LList(const LList<T>& list)
     {
       // uncomment this after implementing insertBack() to enable its
       // reuse to correctly implement the copy constructor
-      //insertBack(current->value);
+      // insertBack(current->value);
       current = current->next;
     }
   }
 }
-
 
 /** destructor
  * Destructor for the List class.  A concrete List implementation must
@@ -113,14 +109,13 @@ LList<T>::LList(const LList<T>& list)
  * memory that the concrete instance is using.  Invoke the clear
  * of the concrete subclass to perform the destruction.
  */
-template <class T>
+template<class T>
 LList<T>::~LList()
 {
   // call clear to do actual work to deallocate any allocation
   // before we destruct
   this->clear();
 }
-
 
 /** List to string
  * Accessor method to construct and return a string representation
@@ -129,14 +124,13 @@ LList<T>::~LList()
  * @returns string Returns the string constructed with the information
  *   about this List.
  */
-template <class T>
+template<class T>
 string LList<T>::str() const
 {
   ostringstream out;
 
   // stream list information into the output stream
-  out << "<list> size: " << this->size
-      << " [ ";
+  out << "<list> size: " << this->size << " [ ";
 
   // stream the current values of the list to the output stream
   Node<T>* current = front;
@@ -165,7 +159,6 @@ string LList<T>::str() const
   return out.str();
 }
 
-
 /** boolean equals operator
  * Check if this List is equal to the right hand side (rhs)
  * list.  The lists are equal if their sizes are equal, and if
@@ -176,7 +169,7 @@ string LList<T>::str() const
  *
  * @returns bool true if the lists are equal, false if the are not.
  */
-template <class T>
+template<class T>
 bool LList<T>::operator==(const List<T>& rhs) const
 {
   // first the lists have to be of the same size, or else they
@@ -202,7 +195,6 @@ bool LList<T>::operator==(const List<T>& rhs) const
   return true;
 }
 
-
 /** indexing operator
  * Provide a way to index individual values in our private
  * linked list of values.  This allows code to, for the
@@ -219,16 +211,15 @@ bool LList<T>::operator==(const List<T>& rhs) const
  * @throws ListMemoryBoundsException if a request for an index beyond
  *   the end of the array (or less than 0) is made.
  */
-template <class T>
+template<class T>
 T& LList<T>::operator[](int index) const
 {
   // first check that the requsted index is legally
   // within the bounds of the current size of our list
-  if ( (index < 0) or (index >= this->size)  )
+  if ((index < 0) or (index >= this->size))
   {
     ostringstream out;
-    out << "Error: <LList::operator[]> illegal bounds access, list size: " << this->size
-        << " tried to access index address: " << index;
+    out << "Error: <LList::operator[]> illegal bounds access, list size: " << this->size << " tried to access index address: " << index;
 
     throw ListMemoryBoundsException(out.str());
   }
@@ -248,12 +239,11 @@ T& LList<T>::operator[](int index) const
   return current->value;
 }
 
-
 /** clear out list
  * Clear or empty out the list.  Return the list back
  * to an empty list.
  */
-template <class T>
+template<class T>
 void LList<T>::clear()
 {
   // if the list is not empty, we need to deallocate and return the nodes
@@ -281,12 +271,11 @@ void LList<T>::clear()
   back = nullptr;
 }
 
-
 /** delete back item
  * Delete the item from the back of the list.  This is an expensive
  * O(n) operation for a singly linked list.
  */
-template <class T>
+template<class T>
 void LList<T>::deleteBack()
 {
   // make sure list is not empty before we try and access
@@ -330,13 +319,12 @@ void LList<T>::deleteBack()
   }
 }
 
-
 /** delete front item
  * Delete the item from the front of the list.  For a singly
  * linked list this operation is much cheaper than deleting
  * from the back, it is constant time O(1) to remove a front item.
  */
-template <class T>
+template<class T>
 void LList<T>::deleteFront()
 {
   // make sure list is not empty before we try and access
@@ -370,7 +358,6 @@ void LList<T>::deleteFront()
   }
 }
 
-
 /** begin iterator
  * Create and return a ListIterator pointing to the beginning of
  * this list of items, ready to be iterated over.
@@ -378,13 +365,12 @@ void LList<T>::deleteFront()
  * @returns ListIterator<T> returns a new instance of type
  *   ListIterator<T> that keeps track of iterating over the list items.
  */
-template <class T>
+template<class T>
 ListIterator<T> LList<T>::begin()
 {
   LListIterator<T> beginItr(front);
   return beginItr;
 }
-
 
 /** end iterator
  * Return a ListIterator pointing to an index which is
@@ -395,13 +381,12 @@ ListIterator<T> LList<T>::begin()
  *   ListIterator<T> that points to the end index indicator
  *   of the list.
  */
-template <class T>
+template<class T>
 ListIterator<T> LList<T>::end()
 {
   LListIterator<T> endItr(back);
   return endItr;
 }
-
 
 /** constant begin iterator
  * Create and return a ListIterator pointing to the beginning of
@@ -410,13 +395,12 @@ ListIterator<T> LList<T>::end()
  * @returns ListIterator<T> returns a new instance of type
  *   ListIterator<T> that keeps track of iterating over the list items.
  */
-template <class T>
+template<class T>
 ListIterator<T> LList<T>::cbegin() const
 {
   LListIterator<T> beginItr(front);
   return beginItr;
 }
-
 
 /** end iterator
  * Return a ListIterator pointing to an index which is
@@ -427,13 +411,12 @@ ListIterator<T> LList<T>::cbegin() const
  *   ListIterator<T> that points to the end index indicator
  *   of the list.
  */
-template <class T>
+template<class T>
 ListIterator<T> LList<T>::cend() const
 {
   LListIterator<T> endItr(back);
   return endItr;
 }
-
 
 /**
  * @brief Cause specific instance compilations

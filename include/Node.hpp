@@ -14,12 +14,11 @@
 #ifndef _NODE_HPP_
 #define _NODE_HPP_
 
-
 /** Node
  * A simple Node structure type to be used to hold values
  * in our linked list implemented of the List ADT.
  */
-template <class T>
+template<class T>
 struct Node
 {
   /// @brief the actual date value of type T this node contains.
@@ -30,6 +29,5 @@ struct Node
   ///    to another node.
   Node<T>* next;
 };
-
 
 #endif // define _NODE_HPP_

@@ -16,13 +16,12 @@
  * the catch2 unit test framework to define the test cases and test
  * assertions.
  */
-#include <iostream>
-#include "catch.hpp"
 #include "LList.hpp"
-#include "ListIterator.hpp"
 #include "ListException.hpp"
+#include "ListIterator.hpp"
+#include "catch.hpp"
+#include <iostream>
 using namespace std;
-
 
 /** Task 1: Test LList insertBack() basic functionality.  For first task, initially
  * only have the default constructor until you get this first function
@@ -74,7 +73,6 @@ using namespace std;
    }
    }
  */
-
 
 /** Task 1: Test LList insertBack() and overloaded operator>> and constructors
  *    that use the append operations.
@@ -191,7 +189,6 @@ using namespace std;
    }
  */
 
-
 /** Task 2: Test LList getFront() member accessor method
  */
 /*
@@ -260,7 +257,6 @@ using namespace std;
    }
    }
  */
-
 
 /** Task 2: Test LList getBack() member accessor method
  */
@@ -331,7 +327,6 @@ using namespace std;
    }
  */
 
-
 /** Task 3: Test LList insertFront() basic functionality
  */
 /*
@@ -379,7 +374,6 @@ using namespace std;
    }
    }
  */
-
 
 /** Task 3: Test LList insertFront() and overloaded operator<<
  */
@@ -436,7 +430,6 @@ using namespace std;
    }
    }
  */
-
 
 /** Task 4: Test LList deleteIndex() mutator method
  */
@@ -521,7 +514,6 @@ using namespace std;
    }
    }
  */
-
 
 /** Task 5: Test LList deleteValue() mutator method
  */
@@ -624,7 +616,6 @@ using namespace std;
    }
    }
  */
-
 
 /** Tasks complete: LList<int> concrete linked list implementation of list of integers
  * Once you have completed tasks 1-5 and are passsing all of the above tests,
@@ -932,7 +923,6 @@ using namespace std;
    }
  */
 
-
 /** Tasks complete: Test LList<string> concrete linked list
  *   implementation of list of strings
  */
@@ -1015,7 +1005,8 @@ using namespace std;
     CHECK(list.getSize() == 9);
     CHECK(list.getFront() == "negative-three-ait");
     CHECK(list.getBack() == "three-ait");
-    CHECK(list.str() == "<list> size: 9 [ negative-three-ait, negative-too-too, alpha, charlie, share-and-enjoy, delta, golf, too-too, three-ait ]");
+    CHECK(list.str() == "<list> size: 9 [ negative-three-ait, negative-too-too, alpha, charlie, share-and-enjoy, delta, golf, too-too,
+   three-ait ]");
    }
 
    SECTION("test copy constructor")

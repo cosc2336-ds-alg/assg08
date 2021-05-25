@@ -13,17 +13,15 @@
 #include "AListIterator.hpp"
 using namespace std;
 
-
 /** default constructor
  * Default constructor, iterator will not be iterating over
  * anything if constructed using the default constructor.
  */
-template <class T>
+template<class T>
 AListIterator<T>::AListIterator()
 {
   current = -1;
 }
-
 
 /** standard constructor
  * Standard constructor, the index parameter indicates beginning
@@ -35,13 +33,12 @@ AListIterator<T>::AListIterator()
  * @param values The (pointer to) the array of values of the list.
  *   We keep a copy of the start of array for this iterator to use.
  */
-template <class T>
+template<class T>
 AListIterator<T>::AListIterator(int index, T* values)
 {
   this->current = index;
   this->values = values;
 }
-
 
 /**  overload dereference operator
  * Overload the dereference operator* for the AListIterator.
@@ -53,7 +50,7 @@ AListIterator<T>::AListIterator(int index, T* values)
  * @returns T Returns the value currently being pointed to by
  *   this iterator.
  */
-template <class T>
+template<class T>
 T AListIterator<T>::operator*()
 {
   // TODO: should we be checking case where current is not a valid
@@ -61,7 +58,6 @@ T AListIterator<T>::operator*()
   // TODO: should we be checking for empty list cases
   return values[current];
 }
-
 
 /** overload increment operator
  * Overload the post increment operator++.  This is defined to cause the
@@ -71,14 +67,13 @@ T AListIterator<T>::operator*()
  *   the iterator to the next value of the list we are iterating over.
  *
  */
-template <class T>
+template<class T>
 ListIterator<T>& AListIterator<T>::operator++()
 {
   current++;
 
   return *this;
 }
-
 
 /**  overload boolean equality operator
  * Overload the boolean operator== to check for equivalence.  This is
@@ -90,12 +85,11 @@ ListIterator<T>& AListIterator<T>::operator++()
  * @returns bool True if the iterators are both pointing to the same
  *   value of the iteration, false otherwise.
  */
-template <class T>
+template<class T>
 bool AListIterator<T>::operator==(const AListIterator<T>& rhs) const
 {
   return current == rhs.current;
 }
-
 
 /**  overload boolean not equal operator
  * Overload the boolean operator!= to check for nonequivalance.  This is
@@ -107,12 +101,11 @@ bool AListIterator<T>::operator==(const AListIterator<T>& rhs) const
  * @returns bool True if the iterators are not pointing to the same
  *   value of the iteration, false otherwise.
  */
-template <class T>
+template<class T>
 bool AListIterator<T>::operator!=(const AListIterator<T>& rhs) const
 {
   return current == rhs.current;
 }
-
 
 /**
  * @brief Cause specific instance compilations

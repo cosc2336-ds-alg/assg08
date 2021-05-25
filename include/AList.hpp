@@ -18,11 +18,10 @@
  */
 #ifndef _ALIST_HPP_
 #define _ALIST_HPP_
-#include <string>
-#include "List.hpp"
 #include "AListIterator.hpp"
+#include "List.hpp"
+#include <string>
 using namespace std;
-
 
 /** @class AList
  * @brief The AList concrete array based implemention of the
@@ -31,7 +30,7 @@ using namespace std;
  * Concrete implementation of List abstraction using an
  * array based implementation.
  */
-template <class T>
+template<class T>
 class AList : public List<T>
 {
 private:
@@ -86,5 +85,4 @@ public:
   ListIterator<T> cend() const;
 };
 
-
-#endif  // define _ALIST_HPP_
+#endif // define _ALIST_HPP_
