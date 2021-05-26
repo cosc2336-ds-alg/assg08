@@ -21,6 +21,7 @@
 template<class T>
 struct Node
 {
+public:
   /// @brief the actual date value of type T this node contains.
   T value;
 

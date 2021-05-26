@@ -13,7 +13,9 @@
 #include "ListIterator.hpp"
 using namespace std;
 
-/** default constructor
+/**
+ * @brief Default constructor
+ *
  * Default constructor, iterator will not be iterating over
  * anything if constructed using the default constructor.
  */
@@ -22,7 +24,9 @@ ListIterator<T>::ListIterator()
 {
 }
 
-/**  overload dereference operator
+/**
+ * @brief Overload dereference operator
+ *
  * Overload the dereference operator* for the ListIterator.
  * This method makes it easy/convenient to access the info
  * that the iterator is currently pointing two.  This is the
@@ -38,7 +42,9 @@ T ListIterator<T>::operator*()
   return T();
 }
 
-/** overload increment operator
+/**
+ * @brief Overload increment operator
+ *
  * Overload the post increment operator++.  This is defined to cause the
  * iterator to move to the next item in the list we are iterating over.
  *
@@ -52,7 +58,9 @@ ListIterator<T>& ListIterator<T>::operator++()
   return *this;
 }
 
-/**  overload boolean equality operator
+/**
+ * @brief Overload boolean equality operator
+ *
  * Overload the boolean operator== to check for equivalence.  This is
  * needed to create loops and test if we are done yet or not iterating
  * over the list by testing if the iterator is == the end() iterator item.
@@ -68,7 +76,9 @@ bool ListIterator<T>::operator==(const ListIterator<T>& rhs) const
   return false;
 }
 
-/**  overload boolean not equal operator
+/**
+ * @brief Overload boolean not equal operator
+ *
  * Overload the boolean operator!= to check for nonequivalance.  This is
  * needed to create loops and test if we are done yet or not iterating
  * over the list by testing if the iterator is != the end() iterator item.

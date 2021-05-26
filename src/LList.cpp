@@ -24,7 +24,9 @@
 #include <string>
 using namespace std;
 
-/** default constructor
+/**
+ * @brief Default constructor
+ *
  * Construct an empty list.  The empty list will have no allocated memory
  * nor any values.
  */
@@ -37,7 +39,9 @@ LList<T>::LList()
   back = nullptr;
 }
 
-/** standard constructor
+/**
+ * @brief Standard constructor
+ *
  * Construct a list of integer values from a (statically) defined and
  * provided array of integers.  We need to dynamically construct
  * a node for each value in the array and create a linked list of these
@@ -67,7 +71,9 @@ LList<T>::LList(int size, T values[])
   }
 }
 
-/** copy constructor
+/**
+ * @brief Copy constructor
+ *
  * Provide a copy constructor for the List class.  A copy constructor
  * will be invoked whenver you assign one instance of a List to another.
  * For example
@@ -103,7 +109,9 @@ LList<T>::LList(const LList<T>& list)
   }
 }
 
-/** destructor
+/**
+ * @brief Class destructor
+ *
  * Destructor for the List class.  A concrete List implementation must
  * provide a clear() method to clear all items and safely deallocate any
  * memory that the concrete instance is using.  Invoke the clear
@@ -117,7 +125,9 @@ LList<T>::~LList()
   this->clear();
 }
 
-/** List to string
+/**
+ * @brief List to string
+ *
  * Accessor method to construct and return a string representation
  * of the current values and status of this List instance.
  *
@@ -159,7 +169,9 @@ string LList<T>::str() const
   return out.str();
 }
 
-/** boolean equals operator
+/**
+ * @brief Boolean equals operator
+ *
  * Check if this List is equal to the right hand side (rhs)
  * list.  The lists are equal if their sizes are equal, and if
  * all elements in both lists are equal.
@@ -195,7 +207,9 @@ bool LList<T>::operator==(const List<T>& rhs) const
   return true;
 }
 
-/** indexing operator
+/**
+ * @brief Indexing operator
+ *
  * Provide a way to index individual values in our private
  * linked list of values.  This allows code to, for the
  * most part, treated an instance of our List as if it were
@@ -219,7 +233,8 @@ T& LList<T>::operator[](int index) const
   if ((index < 0) or (index >= this->size))
   {
     ostringstream out;
-    out << "Error: <LList::operator[]> illegal bounds access, list size: " << this->size << " tried to access index address: " << index;
+    out << "Error: <LList::operator[]> illegal bounds access, list size: "
+	<< this->size << " tried to access index address: " << index;
 
     throw ListMemoryBoundsException(out.str());
   }
@@ -239,9 +254,11 @@ T& LList<T>::operator[](int index) const
   return current->value;
 }
 
-/** clear out list
- * Clear or empty out the list.  Return the list back
- * to an empty list.
+/**
+ * @brief Clear out list
+ *
+ * Clear or empty out the list.  Return the list back to an empty
+ * list.
  */
 template<class T>
 void LList<T>::clear()
@@ -271,7 +288,9 @@ void LList<T>::clear()
   back = nullptr;
 }
 
-/** delete back item
+/**
+ * @brief Delete back item
+ *
  * Delete the item from the back of the list.  This is an expensive
  * O(n) operation for a singly linked list.
  */
@@ -319,7 +338,9 @@ void LList<T>::deleteBack()
   }
 }
 
-/** delete front item
+/**
+ * @brief Delete front item
+ *
  * Delete the item from the front of the list.  For a singly
  * linked list this operation is much cheaper than deleting
  * from the back, it is constant time O(1) to remove a front item.
@@ -358,7 +379,9 @@ void LList<T>::deleteFront()
   }
 }
 
-/** begin iterator
+/**
+ * @brief Begin iterator
+ *
  * Create and return a ListIterator pointing to the beginning of
  * this list of items, ready to be iterated over.
  *
@@ -372,7 +395,9 @@ ListIterator<T> LList<T>::begin()
   return beginItr;
 }
 
-/** end iterator
+/**
+ * @begin End iterator
+ *
  * Return a ListIterator pointing to an index which is
  * at the end of this list, which is used to detect we are
  * at the end of the list when iteration.
@@ -388,7 +413,9 @@ ListIterator<T> LList<T>::end()
   return endItr;
 }
 
-/** constant begin iterator
+/**
+ * @brief Constant begin iterator
+ *
  * Create and return a ListIterator pointing to the beginning of
  * this list of items, ready to be iterated over.
  *
@@ -402,7 +429,9 @@ ListIterator<T> LList<T>::cbegin() const
   return beginItr;
 }
 
-/** end iterator
+/**
+ * @brief Constant end iterator
+ *
  * Return a ListIterator pointing to an index which is
  * at the end of this list, which is used to detect we are
  * at the end of the list when iteration.

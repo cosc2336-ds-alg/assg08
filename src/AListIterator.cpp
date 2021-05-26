@@ -13,7 +13,8 @@
 #include "AListIterator.hpp"
 using namespace std;
 
-/** default constructor
+/** @brief Default constructor
+ *
  * Default constructor, iterator will not be iterating over
  * anything if constructed using the default constructor.
  */
@@ -23,7 +24,8 @@ AListIterator<T>::AListIterator()
   current = -1;
 }
 
-/** standard constructor
+/** @brief Standard constructor
+ *
  * Standard constructor, the index parameter indicates beginning
  * index to begin iterating over this list.
  *
@@ -40,7 +42,8 @@ AListIterator<T>::AListIterator(int index, T* values)
   this->values = values;
 }
 
-/**  overload dereference operator
+/** @brief Overload dereference operator
+ *
  * Overload the dereference operator* for the AListIterator.
  * This method makes it easy/convenient to access the info
  * that the iterator is currently pointing two.  This is the
@@ -59,7 +62,8 @@ T AListIterator<T>::operator*()
   return values[current];
 }
 
-/** overload increment operator
+/** @brief Overload increment operator
+ *
  * Overload the post increment operator++.  This is defined to cause the
  * iterator to move to the next item in the list we are iterating over.
  *
@@ -75,7 +79,8 @@ ListIterator<T>& AListIterator<T>::operator++()
   return *this;
 }
 
-/**  overload boolean equality operator
+/** @brief Ooverload boolean equality operator
+ *
  * Overload the boolean operator== to check for equivalence.  This is
  * needed to create loops and test if we are done yet or not iterating
  * over the list by testing if the iterator is == the end() iterator item.
@@ -91,7 +96,8 @@ bool AListIterator<T>::operator==(const AListIterator<T>& rhs) const
   return current == rhs.current;
 }
 
-/**  overload boolean not equal operator
+/** @brief Overload boolean not equal operator
+ *
  * Overload the boolean operator!= to check for nonequivalance.  This is
  * needed to create loops and test if we are done yet or not iterating
  * over the list by testing if the iterator is != the end() iterator item.

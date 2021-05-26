@@ -25,15 +25,6 @@ using namespace std;
 template<class T>
 class AListIterator : public ListIterator<T>
 {
-private:
-  /// The AList<T> class copies the current pointer
-  ///   to the list values when this iterator is
-  ///   created
-  T* values;
-  /// Current index to the point we currently are at
-  ///   in iterating through this AList
-  int current;
-
 public:
   // constructors
   AListIterator();
@@ -44,6 +35,15 @@ public:
   ListIterator<T>& operator++();
   bool operator==(const AListIterator<T>& rhs) const;
   bool operator!=(const AListIterator<T>& rhs) const;
+
+private:
+  /// The AList<T> class copies the current pointer
+  ///   to the list values when this iterator is
+  ///   created
+  T* values;
+  /// Current index to the point we currently are at
+  ///   in iterating through this AList
+  int current;
 };
 
 #endif // define _ALIST_ITERATOR_HPP_

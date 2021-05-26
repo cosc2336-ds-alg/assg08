@@ -14,7 +14,9 @@
 #include "LList.hpp"
 using namespace std;
 
-/** default constructor
+/**
+ * @brief Default constructor
+ *
  * Default constructor, iterator will not be iterating over
  * anything if constructed using the default constructor.
  */
@@ -24,7 +26,9 @@ LListIterator<T>::LListIterator()
   current = nullptr;
 }
 
-/** standard constructor
+/**
+ * @brief Standard constructor
+ *
  * Standard constructor, we are given a pointer to the node
  * we are to begin iteration with.
  *
@@ -37,7 +41,9 @@ LListIterator<T>::LListIterator(Node<T>* ptr)
   this->current = ptr;
 }
 
-/**  overload dereference operator
+/**
+ * @brief Overload dereference operator
+ *
  * Overload the dereference operator* for the LListIterator.
  * This method makes it easy/convenient to access the info
  * that the iterator is currently pointing two.  This is the
@@ -56,7 +62,9 @@ T LListIterator<T>::operator*()
   return current->value;
 }
 
-/** overload increment operator
+/**
+ * @brief Overload increment operator
+ *
  * Overload the post increment operator++.  This is defined to cause the
  * iterator to move to the next item in the list we are iterating over.
  *
@@ -72,7 +80,9 @@ ListIterator<T>& LListIterator<T>::operator++()
   return *this;
 }
 
-/**  overload boolean equality operator
+/**
+ * @brief Overload boolean equality operator
+ *
  * Overload the boolean operator== to check for equivalence.  This is
  * needed to create loops and test if we are done yet or not iterating
  * over the list by testing if the iterator is == the end() iterator item.
@@ -88,7 +98,9 @@ bool LListIterator<T>::operator==(const LListIterator<T>& rhs) const
   return current == rhs.current;
 }
 
-/**  overload boolean not equal operator
+/**
+ * @brief Overload boolean not equal operator
+ *
  * Overload the boolean operator!= to check for nonequivalance.  This is
  * needed to create loops and test if we are done yet or not iterating
  * over the list by testing if the iterator is != the end() iterator item.

@@ -17,7 +17,9 @@
 #include <iostream>
 using namespace std;
 
-/** size accessor
+/**
+ * @brief Size accessor
+ * 
  * Accessor method to get the current size of this List of integers.
  *
  * @returns int Returns the current size of the list of integers.
@@ -28,7 +30,9 @@ int List<T>::getSize() const
   return size;
 }
 
-/** check if empty list
+/**
+ * @brief Check if empty list
+ *
  * Accessor method to test if the list is currently
  * empty or not.
  *
@@ -43,8 +47,8 @@ bool List<T>::isEmpty() const
   return size == 0;
 }
 
-/** List output operator
- *@brief overload output stream operator for List type.
+/**
+ * @brief Overload output stream operator for List type.
  *
  * Overload the output stream operator so that we can display current
  * values of a List on standard output.  We can define this in the

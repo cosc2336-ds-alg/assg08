@@ -27,7 +27,6 @@ using namespace std;
 template<class T>
 class ListIterator
 {
-private:
 public:
   // constructors and descturcotr
   ListIterator();

@@ -119,17 +119,17 @@ will be your job to implement them.
 For this assignment you will be given the following files that you will be
 using and adding code to for this assignment.
 
-| File Name                  | Description                                                                                               |
-|----------------------------|-----------------------------------------------------------------------------------------------------------|
-| `src/assg-tests-AList.cpp` | Unit tests of the array based `AList` implementation of the `List` API                                   |
-| `src/assg-tests-LList.cpp` | Unit tests of the link list based `LList` implementation of the `List` API                                |
-| `include/List.hpp`         | Header file of the ADT base `List` class that defines the `List` interface / abstraction                  |
-| `include/AList.hpp`        | Header file of the concrete array based implementation of the `List` abstract data type                   |
-| `include/LList.hpp`        | Header file of the concrete linked list based implementation of the `List` abstract data type             |
-| `include/Node.hpp`         | Header file of the Node structure used by the linked list implementation                                  |
-| `src/List.cpp`             | Implementation file of common methods of the `List` base class                                            |
-| `src/AList.cpp`            | Implementation file for the `AList` member functions that implement the concrete array based `List`       |
-| `src/LList.cpp`            | Implementation file for the `LList` member functions that implement the concrete linked list based `List` |
+| File Name                 | Description                                                                                               |
+|---------------------------|-----------------------------------------------------------------------------------------------------------|
+| `src/test-AList.cpp`      | Unit tests of the array based `AList` implementation of the `List` API                                    |
+| `src/test-LList.cpp`      | Unit tests of the link list based `LList` implementation of the `List` API                                |
+| `include/List.hpp`        | Header file of the ADT base `List` class that defines the `List` interface / abstraction                  |
+| `include/AList.hpp`       | Header file of the concrete array based implementation of the `List` abstract data type                   |
+| `include/LList.hpp`       | Header file of the concrete linked list based implementation of the `List` abstract data type             |
+| `include/Node.hpp`        | Header file of the Node structure used by the linked list implementation                                  |
+| `src/List.cpp`            | Implementation file of common methods of the `List` base class                                            |
+| `src/AList.cpp`           | Implementation file for the `AList` member functions that implement the concrete array based `List`       |
+| `src/LList.cpp`           | Implementation file for the `LList` member functions that implement the concrete linked list based `List` |
 
 
 This week you will be adding in several new member functions to the
@@ -144,17 +144,15 @@ you have completed the following setup steps.
    current class semester and section.
 2. Clone the repository using the SSH URL to your local class DevBox
    development environment.
-3. Checkout the 'origins/feedback' branch to your local working DevBox
-   repository.
-4. Configure the project by running the `configure` script from a terminal.
-5. Confirm that the project builds and runs, though no tests will be
+3. Configure the project by running the `configure` script from a terminal.
+4. Confirm that the project builds and runs, though no tests will be
    defined or run initially.  If the project does not build on the first
    checkout, please inform the instructor.
-6. You should create the issue for Task 1 and/or for all tasks for the assignment
+5. You should create the issue for Task 1 and/or for all tasks for the assignment
    now before beginning the first task.  On your GitHub account, go to issues,
-   and create it/them from the issue templates for the assignment.  Also you
-   should close the initial Pull request that should be automatically
-   opened for you, so that you can open your own when committing your work.
+   and create it/them from the issue templates for the assignment.  Also make
+   sure you are linking each issue you create with the `Feedback`
+   pull request for the assignment.
 
 
 # Assignment Tasks
@@ -162,8 +160,9 @@ you have completed the following setup steps.
 
 ## Task 1: Implement `LList` `insertBack()` and overloaded `operator>>()`
 
-As usual make sure that you create Task 1 issue on GitHub and 
-are ready to create your Pull request for this assignment before beginning.
+As usual make sure that you create Task 1 issue on GitHub and and have
+linked the issue to the `Feedback` pull request for this assignment
+before beginning.
 
 Also as usual, you should be practicing incremental development.  A good first
 step is to always add in the function prototype for `insertBack()` into the
@@ -256,7 +255,7 @@ the `assg-tests-LList.cpp` file tests the overloaded append operator
 and the constructors for your `LList` class.
 
 Once you are satisfied with your code, commit your changes and push them
-to the `feedback` branch of your GitHub repository.
+to the `Feedback` pull request of your GitHub repository.
 
 ## Task 2: Implement `LList` `getFront()` and `getBack()` API accessors
 
@@ -291,7 +290,7 @@ The next two set of unit tests in the `assg-tests-LList.cpp` test file test
 and implement the functions one at a time.
 
 Once you are satisfied with your work, add and commit your changes to the
-`feedback` branch of your GitHub repository.
+`Feedback` pull request of your GitHub repository.
 
 
 ## Task 3: Implement `LList` `insertFront()` and overloaded `operator<<()`
@@ -327,7 +326,7 @@ Prepending to the front of a linked list is pretty similar to the task
 
 Once you are satisfied with your implementation and can pass the 
 uncommented tests of `insertBack()` and the overloaded `operator<<()`,
-commit your changes and push them to the `feedback` branch of your
+commit your changes and push them to the `Feedback` pull request of your
 GitHub repository.
 
 ## Task 4: Implement `LList` `deleteIndex()` API mutator
@@ -377,7 +376,7 @@ the `deleteIndex()` method:
 
 Once you are satisfied with your work on the `deleteIndex()`
 member function, commit your changes and push them to the
-`feedback` branch of your repository.
+`Feedback` pull request of your repository.
 
 ## Task 5: Implement `LList` `deleteValue()` API mutator
 
@@ -456,7 +455,8 @@ Once you are satisfied with your work, commit you changes and push them
 to the repository.  This completes the assignment, so you should have
 a pull request created with all of the commits for these tasks, and
 all of the issues associated with this assignment associated with the
-pull request.
+pull request.  All actions/tests should be passing now for the
+final commit you made for task 5.
 
 # Assignment Submission
 
@@ -471,10 +471,10 @@ building and able to run the tests.  You may loose points for pushing
 a broken build, especially if the last build you submit is not
 properly compiling and running the tests.
 
-In this problem, up to 40 points will be given for having at least 1
+In this problem, up to 25 points will be given for having at least 1
 commit that compiles and runs the tests (and at least some attempt was
-made to work on the first task).  Thereafter 10 points are awarded for
-completing each of the 6 tasks.  However you should note that the
+made to work on the first task).  Thereafter 15 points are awarded for
+completing each of the 5 tasks.  However you should note that the
 autograder awards either all point for passing all tests, or no points
 if any test is failing for one of the tasks.  Also note that even if
 you pass all tests, when the instructor evaluates your assignment,

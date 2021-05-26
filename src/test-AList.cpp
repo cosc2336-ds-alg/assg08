@@ -1,4 +1,4 @@
-/** @file assg-tests-AList.cpp
+/** @file test-AList.cpp
  * @brief Unit tests for Assignment Overloading and Templates
  *
  * @author Derek Harter

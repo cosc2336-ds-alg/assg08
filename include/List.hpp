@@ -30,11 +30,6 @@ using namespace std;
 template<class T>
 class List
 {
-protected:
-  /// @brief the current size of the list of integer values, this is
-  ///   protected so derived classes can access it
-  int size;
-
 public:
   // accessor and information methods
   int getSize() const;
@@ -56,10 +51,6 @@ public:
   // virtual void deleteValue(const T& value) = 0;
   // virtual void deleteIndex(int index) = 0;
 
-  // TODO: feels like I want this as required parts of the
-  //   list abstraction, but this is trickier than I expected
-  //   as problem combining the pure virtual function and
-  //   templates.
   // iterating over list the C++ way, using iterator objects
   virtual ListIterator<T> begin() = 0;
   virtual ListIterator<T> end() = 0;
@@ -69,6 +60,11 @@ public:
   // friend functions and friend operators
   template<typename U>
   friend ostream& operator<<(ostream& out, const List<U>& rhs);
+
+protected: // private to the class hierarchy, only child classes can access
+  /// @brief the current size of the list of integer values, this is
+  ///   protected so derived classes can access it
+  int size;
 };
 
 #endif // define _LIST_HPP_

@@ -3,23 +3,20 @@ VERSION=0.3
 BASE_DIR := ../assg-base-$(VERSION)
 PROJECT_NAME=assg
 
-test_src  = $(PROJECT_NAME)-tests-AList.cpp \
-	    $(PROJECT_NAME)-tests-LList.cpp \
-	    List.cpp \
+assg_src  = List.cpp \
 	    ListIterator.cpp \
 	    AList.cpp \
 	    AListIterator.cpp \
 	    LList.cpp \
 	    LListIterator.cpp \
 	    ListException.cpp
-debug_src = $(PROJECT_NAME)-main.cpp \
-	    List.cpp \
-	    ListIterator.cpp \
-	    AList.cpp \
-	    AListIterator.cpp \
-	    LList.cpp \
-	    LListIterator.cpp \
-	    ListException.cpp
+
+test_src  = test-AList.cpp \
+	    test-LList.cpp \
+	    ${assg_src}
+
+debug_src = main.cpp \
+	    ${assg_src}
 
 # template files, list all files that define template classes
 # or functions and should not be compiled separately (template

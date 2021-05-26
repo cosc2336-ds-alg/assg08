@@ -27,11 +27,6 @@ using namespace std;
 template<class T>
 class LListIterator : public ListIterator<T>
 {
-private:
-  /// @brief pointer to the current node of the current
-  ///   iteration of the list
-  Node<T>* current;
-
 public:
   // constructors
   LListIterator();
@@ -42,6 +37,11 @@ public:
   ListIterator<T>& operator++();
   bool operator==(const LListIterator<T>& rhs) const;
   bool operator!=(const LListIterator<T>& rhs) const;
+
+private:
+  /// @brief pointer to the current node of the current
+  ///   iteration of the list
+  Node<T>* current;
 };
 
 #endif // define _LLIST_ITERATOR_HPP_

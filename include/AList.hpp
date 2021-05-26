@@ -33,24 +33,6 @@ using namespace std;
 template<class T>
 class AList : public List<T>
 {
-private:
-  /// @brief private constant, initial allocation size for empty lists
-  ///   to grow to
-  const int INITIAL_ALLOCATION_SIZE = 10;
-
-  /// @brief the current amount of allocated memory being
-  ///   managed by/for this list of values
-  int allocationSize;
-
-  /// @brief For the array based implementation, the values is a fixed
-  ///   array of type T values.  The values contained in the list
-  ///   will be manged from the array, and a new array allocated and
-  ///   values copied if we fill up the current allocation.
-  T* values;
-
-  // private member methods for managing the List internally
-  void growListIfNeeded();
-
 public:
   // constructors and destructors
   AList();                          // default constructor
@@ -83,6 +65,24 @@ public:
   ListIterator<T> end();
   ListIterator<T> cbegin() const;
   ListIterator<T> cend() const;
+
+private:
+  /// @brief private constant, initial allocation size for empty lists
+  ///   to grow to
+  const int INITIAL_ALLOCATION_SIZE = 10;
+
+  /// @brief the current amount of allocated memory being
+  ///   managed by/for this list of values
+  int allocationSize;
+
+  /// @brief For the array based implementation, the values is a fixed
+  ///   array of type T values.  The values contained in the list
+  ///   will be manged from the array, and a new array allocated and
+  ///   values copied if we fill up the current allocation.
+  T* values;
+
+  // private member methods for managing the List internally
+  void growListIfNeeded();
 };
 
 #endif // define _ALIST_HPP_

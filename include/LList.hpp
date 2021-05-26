@@ -32,13 +32,6 @@ using namespace std;
 template<class T>
 class LList : public List<T>
 {
-private:
-  /// @brief pointer to the front or first node of the linked list.
-  Node<T>* front;
-
-  /// @brief pointer to the back or last node of the linked list.
-  Node<T>* back;
-
 public:
   // constructors and destructors
   LList();                          // default constructor
@@ -62,6 +55,13 @@ public:
   ListIterator<T> end();
   ListIterator<T> cbegin() const;
   ListIterator<T> cend() const;
+  
+private:
+  /// @brief pointer to the front or first node of the linked list.
+  Node<T>* front;
+
+  /// @brief pointer to the back or last node of the linked list.
+  Node<T>* back;
 };
 
 #endif // define _LLIST_HPP_
