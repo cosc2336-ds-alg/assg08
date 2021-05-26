@@ -927,16 +927,15 @@ using namespace std;
  *   implementation of list of strings
  */
 /*
-   TEST_CASE("LList<string> test string list concrete linked list implementation",
-          "[task5]")
-   {
-   SECTION("test empty list is empty")
-   {
+TEST_CASE("LList<string> test string list concrete linked list implementation", "[task5]")
+{
+  SECTION("test empty list is empty")
+  {
     LList<string> empty;
 
     // empty lists should be empty
     CHECK(empty.getSize() == 0);
-    CHECK(empty.isEmpty() );
+    CHECK(empty.isEmpty());
     CHECK(empty.str() == "<list> size: 0 [ ]");
 
     // empty lists should compare as being equal
@@ -952,18 +951,18 @@ using namespace std;
     // empty list can be cleared and is still empty
     empty.clear();
     CHECK(empty.getSize() == 0);
-    CHECK(empty.isEmpty() );
+    CHECK(empty.isEmpty());
     CHECK(empty.str() == "<list> size: 0 [ ]");
-   }
+  }
 
-   SECTION("test array based constructor")
-   {
+  SECTION("test array based constructor")
+  {
     string values[] = {"alpha", "charlie", "bravo", "delta", "golf"};
     LList<string> list(5, values);
 
     // nonempty list should not be empty
     CHECK(list.getSize() == 5);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 5 [ alpha, charlie, bravo, delta, golf ]");
 
     // test access to front and back
@@ -977,7 +976,7 @@ using namespace std;
     CHECK(list[3] == "delta");
     CHECK(list[4] == "golf");
     CHECK_THROWS_AS(list[-1], ListMemoryBoundsException);
-    CHECK_THROWS_AS(list[5],  ListMemoryBoundsException);
+    CHECK_THROWS_AS(list[5], ListMemoryBoundsException);
     list[2] = "share-and-enjoy";
     CHECK(list[2] == "share-and-enjoy");
     CHECK(list.str() == "<list> size: 5 [ alpha, charlie, share-and-enjoy, delta, golf ]");
@@ -1005,12 +1004,12 @@ using namespace std;
     CHECK(list.getSize() == 9);
     CHECK(list.getFront() == "negative-three-ait");
     CHECK(list.getBack() == "three-ait");
-    CHECK(list.str() == "<list> size: 9 [ negative-three-ait, negative-too-too, alpha, charlie, share-and-enjoy, delta, golf, too-too,
-   three-ait ]");
-   }
+    CHECK(list.str() ==
+          "<list> size: 9 [ negative-three-ait, negative-too-too, alpha, charlie, share-and-enjoy, delta, golf, too-too, three-ait ]");
+  }
 
-   SECTION("test copy constructor")
-   {
+  SECTION("test copy constructor")
+  {
     string values[] = {"charlie", "alpha", "delta", "bravo"};
     LList<string> list(4, values);
     LList<string> copy = list;
@@ -1033,86 +1032,86 @@ using namespace std;
     copy.deleteValue("bravo");
     CHECK_FALSE(copy == list);
     CHECK_FALSE(list == copy);
-   }
+  }
 
-   SECTION("test clear operation")
-   {
+  SECTION("test clear operation")
+  {
     string values[] = {"charlie", "alpha", "delta", "bravo"};
     LList<string> list(4, values);
 
     // list is not empty before clear
     CHECK(list.getSize() == 4);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 4 [ charlie, alpha, delta, bravo ]");
 
     // list is empty after clear
     list.clear();
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // cleared list should be equal to empty list
     LList<string> empty;
     CHECK(list == empty);
     CHECK(empty == list);
-   }
+  }
 
-   SECTION("test deleting front values")
-   {
+  SECTION("test deleting front values")
+  {
     string values[] = {"charlie", "alpha", "delta"};
     LList<string> list(3, values);
 
     // delete from list front with more than 1 item
     list.deleteFront();
     CHECK(list.getSize() == 2);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ alpha, delta ]");
 
     // delete from list front with more than 1 item
     list.deleteFront();
     CHECK(list.getSize() == 1);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ delta ]");
 
     // delete from list front with 1 item, lists becomes empty
     list.deleteFront();
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // deleting from front of empty list should complain
     CHECK_THROWS_AS(list.deleteFront(), ListEmptyException);
-   }
+  }
 
-   SECTION("test deleting back values")
-   {
+  SECTION("test deleting back values")
+  {
     string values[] = {"charlie", "alpha", "delta"};
     LList<string> list(3, values);
 
     // delete from list back with more than 1 item
     list.deleteBack();
     CHECK(list.getSize() == 2);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ charlie, alpha ]");
 
     // delete from list back with more than 1 item
     list.deleteBack();
     CHECK(list.getSize() == 1);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ charlie ]");
 
     // delete from list back with 1 item, lists becomes empty
     list.deleteBack();
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // deleting from back of empty list should complain
     CHECK_THROWS_AS(list.deleteBack(), ListEmptyException);
-   }
+  }
 
-   SECTION("test delete value at index")
-   {
+  SECTION("test delete value at index")
+  {
     string values[] = {"charlie", "alpha", "delta", "bravo"};
     LList<string> list(4, values);
 
@@ -1139,19 +1138,18 @@ using namespace std;
     CHECK(list.getSize() == 1);
     CHECK(list.getFront() == "alpha");
     CHECK(list.getBack() == "alpha");
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ alpha ]");
 
     // test delete and list becomes empty
     list.deleteIndex(0);
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
+  }
 
-   }
-
-   SECTION("test deletion of values from list")
-   {
+  SECTION("test deletion of values from list")
+  {
     string values[] = {"alpha", "charlie", "bravo", "delta", "charlie", "delta", "echo"};
     LList<string> list(7, values);
 
@@ -1184,18 +1182,18 @@ using namespace std;
     CHECK(list.getSize() == 2);
     CHECK(list.getFront() == "charlie");
     CHECK(list.getBack() == "charlie");
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ charlie, charlie ]");
 
     // test delete two values, list is now empty
     list.deleteValue("charlie");
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
-   }
+  }
 
-   SECTION("test list iteration")
-   {
+  SECTION("test list iteration")
+  {
     string values[] = {"charlie", "alpha", "delta", "bravo"};
     LList<string> list(4, values);
 
@@ -1223,6 +1221,6 @@ using namespace std;
       CHECK(value == values[index]);
       index++;
     }
-   }
-   }
- */
+  }
+}
+*/

@@ -20,7 +20,7 @@ using namespace std;
 
 /**
  * @brief Main entry point
- * 
+ *
  * Main entry point for debugging functions.
  *
  * @param argc The command line argument count, the number of arguments

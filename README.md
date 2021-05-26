@@ -177,13 +177,13 @@ the `virtual` at the start and the `= 0` at the end of the function.
 
 For this assignment, you can examine these function signatures
 implementations in the `AList` class.  The implementation you do will
-be different, since you are using a linked list instead of an array,
-but the function signatures will be identical, except that the
+be different, since you are implementing a linked list instead of an
+array, but the function signatures will be identical, except that the
 functions you write will be members of the `LList<T>::` class instead
-of `AList`.  The first test case in the `assg-tests-LList.cpp` file
-contains the first set of tests you need to get to pass, so uncomment
-this first test case, and make sure you can compile and run the tests
-before proceeding.
+of `AList<T>::`.  The first test case in the `test-LList.cpp`
+file contains the first set of tests you need to get to pass, so
+uncomment this first test case, and make sure you can compile and run
+the tests before proceeding.
 
 The `insertBack()` has the same purpose for our `List` as we did in a
 previous assignment, it simply appends a new item to the back of the
@@ -198,7 +198,7 @@ unsure of your function signature here.
 
 Appending on a linked list is hopefully relatively easy.  You do have
 to check for the special case of the list being empty and handle it.
-The general steps insert onto the back of the linked list are
+The general steps to insert onto the back of the linked list are:
 
 1. Dynamically allocate a new `Node`
    - Initialize the nodes value to the input value given for the
@@ -236,10 +236,19 @@ defined in the base class by prepending `this`, so for example, to update
 the size, you can do
 
 ```c++
+List<T>::size += 1;
+```
+
+or you can also refer to the member variable by dereferencing the `this`
+pointer as follows:
+
+```c++
 this->size += 1;
 ```
 
-which will increment the size by 1 as you need here.
+Either method will work to let the compiler know how to find the size
+member variable, and both examples will increment the size by 1 as you
+need here.
 
 Once you have `insertBack()` working and the first test case passing, make sure
 that you uncomment the calls to `insertBack()` in the copy constructor and
@@ -251,7 +260,7 @@ test the `insertBack()` more thoroughly.
 Then you should also add in the overloaded `operator>>()` as we did
 before.  It should be a simple method that simply calls your
 `insertBack()` to do the actual work.  The second set of test cases in
-the `assg-tests-LList.cpp` file tests the overloaded append operator
+the `test-LList.cpp` file tests the overloaded append operator
 and the constructors for your `LList` class.
 
 Once you are satisfied with your code, commit your changes and push them
@@ -285,7 +294,7 @@ values from the list.  Throwing the exception allows for a user to
 catch and handle this case for situations where they might want to try
 this without knowing if the list is empty or not before hand.
 
-The next two set of unit tests in the `assg-tests-LList.cpp` test file test
+The next two set of unit tests in the `test-LList.cpp` test file test
 `getFront()` and `getBack()` respectively.  You should uncomment them
 and implement the functions one at a time.
 

@@ -19,7 +19,7 @@ using namespace std;
 
 /**
  * @brief Size accessor
- * 
+ *
  * Accessor method to get the current size of this List of integers.
  *
  * @returns int Returns the current size of the list of integers.

@@ -233,8 +233,7 @@ T& LList<T>::operator[](int index) const
   if ((index < 0) or (index >= this->size))
   {
     ostringstream out;
-    out << "Error: <LList::operator[]> illegal bounds access, list size: "
-	<< this->size << " tried to access index address: " << index;
+    out << "Error: <LList::operator[]> illegal bounds access, list size: " << this->size << " tried to access index address: " << index;
 
     throw ListMemoryBoundsException(out.str());
   }

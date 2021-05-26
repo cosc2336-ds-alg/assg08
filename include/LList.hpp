@@ -55,7 +55,7 @@ public:
   ListIterator<T> end();
   ListIterator<T> cbegin() const;
   ListIterator<T> cend() const;
-  
+
 private:
   /// @brief pointer to the front or first node of the linked list.
   Node<T>* front;
