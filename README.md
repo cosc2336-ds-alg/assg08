@@ -1,7 +1,7 @@
 ---
 title: 'Assignment Linked Lists: Implementation of Linked List API Features'
 author: 'COSC 2336: Data Structures and Algorithms'
-date: 'Summer 2021'
+date: 'Spring 2024'
 ---
 
 
@@ -121,8 +121,8 @@ using and adding code to for this assignment.
 
 | File Name                 | Description                                                                                               |
 |---------------------------|-----------------------------------------------------------------------------------------------------------|
-| `src/test-AList.cpp`      | Unit tests of the array based `AList` implementation of the `List` API                                    |
-| `src/test-LList.cpp`      | Unit tests of the link list based `LList` implementation of the `List` API                                |
+| `src/assg08-AList-tests.cpp` | Unit tests of the array based `AList` implementation of the `List` API                                    |
+| `src/assg08-LList-tests.cpp` | Unit tests of the link list based `LList` implementation of the `List` API                                |
 | `include/List.hpp`        | Header file of the ADT base `List` class that defines the `List` interface / abstraction                  |
 | `include/AList.hpp`       | Header file of the concrete array based implementation of the `List` abstract data type                   |
 | `include/LList.hpp`       | Header file of the concrete linked list based implementation of the `List` abstract data type             |
@@ -143,8 +143,8 @@ you have completed the following setup steps.
    assignment invitation link for 'Assignment Recursion' for our
    current class semester and section.
 2. Clone the repository using the SSH URL to your local class DevBox
-   development environment.
-3. Configure the project by running the `configure` script from a terminal.
+   development environment. Make sure to open the cloned
+   folder and restart inside of the correct Dev Container.
 4. Confirm that the project builds and runs, though no tests will be
    defined or run initially.  If the project does not build on the first
    checkout, please inform the instructor.
