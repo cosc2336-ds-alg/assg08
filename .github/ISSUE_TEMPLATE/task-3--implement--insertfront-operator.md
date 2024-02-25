@@ -24,3 +24,6 @@ Prepending to the front of a linked list is pretty similar to the task 1 of appe
 **Additional Requirements**
 
 - Make sure you are reusing `isEmpty()` to test for the list being empty or not.
+- Make sure that you uncomment the calls to `insertFront()` in the `LList` constructors so that they are reusing your function and properly constructing lists now.
+- You are required to be correctly allocating a new node and managing the linked list as suggested.  When the list is of size 1, both `front` and `back` pointers of the linked list should be pointing to the new `Node` item just created.
+- Your overloaded `operator<<()` should be reusing the `insertFront()` method.  It should have the same signature as this method.

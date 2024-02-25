@@ -23,72 +23,80 @@
 #include <iostream>
 using namespace std;
 
+#undef task1_1
+#undef task1_2
+#undef task2_1
+#undef task2_2
+#undef task3_1
+#undef task3_2
+#undef task4
+#undef task5
+#undef all_tasks_complete
+
 /** Task 1: Test LList insertBack() basic functionality.  For first task, initially
  * only have the default constructor until you get this first function
  * working.  So this method simply checks the function is present and can
  * insert items on an empty list.
  */
-/*
-   TEST_CASE("LList test basic insertBack() functionality",
-          "[task1]")
-   {
-   SECTION("test insert back on empty integer list")
-   {
+#ifdef task1
+TEST_CASE("LList test basic insertBack() functionality", "[task1]")
+{
+  SECTION("test insert back on empty integer list")
+  {
     LList<int> list;
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // list goes from empty to size 1
     list.insertBack(5);
     CHECK(list.getSize() == 1);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ 5 ]");
 
     // list goes to size 2 now
     list.insertBack(7);
     CHECK(list.getSize() == 2);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ 5, 7 ]");
-   }
+  }
 
-   SECTION("test insert back on empty string list")
-   {
+  SECTION("test insert back on empty string list")
+  {
     LList<string> list;
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // list goes from empty to size 1
     list.insertBack("echo");
     CHECK(list.getSize() == 1);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ echo ]");
 
     // list goes to size 2 now
     list.insertBack("golf");
     CHECK(list.getSize() == 2);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ echo, golf ]");
-   }
-   }
- */
+  }
+}
+#endif
 
 /** Task 1: Test LList insertBack() and overloaded operator>> and constructors
  *    that use the append operations.
  */
-/*
-   TEST_CASE("LList test insertBack() and overloaded operator>>",
-          "[task1]")
-   {
-   SECTION("test array based constructor on integer list")
-   {
+#ifdef task1_2
+TEST_CASE("LList test insertBack() and overloaded operator>>", "[task1]")
+{
+  SECTION("test array based constructor on integer list")
+  {
     int values[] = {1, 3, -2, -4, 7};
     LList<int> list(5, values);
 
     // nonempty list should not be empty
     CHECK(list.getSize() == 5);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 5 [ 1, 3, -2, -4, 7 ]");
 
     // test indexing access
@@ -98,7 +106,7 @@ using namespace std;
     CHECK(list[3] == -4);
     CHECK(list[4] == 7);
     CHECK_THROWS_AS(list[-1], ListMemoryBoundsException);
-    CHECK_THROWS_AS(list[5],  ListMemoryBoundsException);
+    CHECK_THROWS_AS(list[5], ListMemoryBoundsException);
     list[2] = 42;
     CHECK(list[2] == 42);
     CHECK(list.str() == "<list> size: 5 [ 1, 3, 42, -4, 7 ]");
@@ -111,10 +119,10 @@ using namespace std;
     list >> 38;
     CHECK(list.getSize() == 7);
     CHECK(list.str() == "<list> size: 7 [ 1, 3, 42, -4, 7, 22, 38 ]");
-   }
+  }
 
-   SECTION("test copy constructor on integer list")
-   {
+  SECTION("test copy constructor on integer list")
+  {
     int values[] = {3, 1, 4, 2};
     LList<int> list(4, values);
     LList<int> copy = list;
@@ -132,16 +140,16 @@ using namespace std;
     copy[1] = 5;
     CHECK(copy == list);
     CHECK(list == copy);
-   }
+  }
 
-   SECTION("test array based constructor on string list")
-   {
+  SECTION("test array based constructor on string list")
+  {
     string values[] = {"alpha", "charlie", "negative-bravo", "negative-delta", "golf"};
     LList<string> list(5, values);
 
     // nonempty list should not be empty
     CHECK(list.getSize() == 5);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 5 [ alpha, charlie, negative-bravo, negative-delta, golf ]");
 
     // test indexing access
@@ -151,7 +159,7 @@ using namespace std;
     CHECK(list[3] == "negative-delta");
     CHECK(list[4] == "golf");
     CHECK_THROWS_AS(list[-1], ListMemoryBoundsException);
-    CHECK_THROWS_AS(list[5],  ListMemoryBoundsException);
+    CHECK_THROWS_AS(list[5], ListMemoryBoundsException);
     list[2] = "life-universe-everything";
     CHECK(list[2] == "life-universe-everything");
     CHECK(list.str() == "<list> size: 5 [ alpha, charlie, life-universe-everything, negative-delta, golf ]");
@@ -164,10 +172,10 @@ using namespace std;
     list >> "zulu";
     CHECK(list.getSize() == 7);
     CHECK(list.str() == "<list> size: 7 [ alpha, charlie, life-universe-everything, negative-delta, golf, victor, zulu ]");
-   }
+  }
 
-   SECTION("test copy constructor on integer list")
-   {
+  SECTION("test copy constructor on integer list")
+  {
     string values[] = {"charlie", "alpha", "delta", "bravo"};
     LList<string> list(4, values);
     LList<string> copy = list;
@@ -185,31 +193,29 @@ using namespace std;
     copy[1] = "echo";
     CHECK(copy == list);
     CHECK(list == copy);
-   }
-   }
- */
+  }
+}
+#endif
 
 /** Task 2: Test LList getFront() member accessor method
  */
-/*
-   TEST_CASE("LList test getFront() member accessor method",
-          "[task2]")
-   {
-   SECTION("test attempt to access empty int list throws expected exception")
-   {
+#ifdef task2_1
+TEST_CASE("LList test getFront() member accessor method", "[task2]")
+{
+  SECTION("test attempt to access empty int list throws expected exception")
+  {
     LList<int> empty;
     CHECK_THROWS_AS(empty.getFront(), ListEmptyException);
-   }
+  }
 
-   SECTION("test attempt to access empty string list throws expected exception")
-   {
+  SECTION("test attempt to access empty string list throws expected exception")
+  {
     LList<string> empty;
     CHECK_THROWS_AS(empty.getFront(), ListEmptyException);
-   }
+  }
 
-
-   SECTION("test get front on integer list")
-   {
+  SECTION("test get front on integer list")
+  {
     // list of size 1 should be able to get front item
     int values1[] = {5};
     LList<int> list1(1, values1);
@@ -230,10 +236,10 @@ using namespace std;
     CHECK(list1.getFront() == 42);
     list3[0] = 38;
     CHECK(list3.getFront() == 38);
-   }
+  }
 
-   SECTION("test get front on string list")
-   {
+  SECTION("test get front on string list")
+  {
     // list of size 1 should be able to get front item
     string values1[] = {"echo"};
     LList<string> list1(1, values1);
@@ -254,31 +260,29 @@ using namespace std;
     CHECK(list1.getFront() == "thanks-for-the-fish");
     list3[0] = "sierra";
     CHECK(list3.getFront() == "sierra");
-   }
-   }
- */
+  }
+}
+#endif
 
 /** Task 2: Test LList getBack() member accessor method
  */
-/*
-   TEST_CASE("LList test getBack() member accessor method",
-          "[task2]")
-   {
-   SECTION("test attempt to access empty int list throws expected exception")
-   {
+#ifdef task2_2
+TEST_CASE("LList test getBack() member accessor method", "[task2]")
+{
+  SECTION("test attempt to access empty int list throws expected exception")
+  {
     LList<int> empty;
     CHECK_THROWS_AS(empty.getBack(), ListEmptyException);
-   }
+  }
 
-   SECTION("test attempt to access empty string list throws expected exception")
-   {
+  SECTION("test attempt to access empty string list throws expected exception")
+  {
     LList<string> empty;
     CHECK_THROWS_AS(empty.getBack(), ListEmptyException);
-   }
+  }
 
-
-   SECTION("test get back on integer list")
-   {
+  SECTION("test get back on integer list")
+  {
     // list of size 1 should be able to get back item
     int values1[] = {5};
     LList<int> list1(1, values1);
@@ -299,10 +303,10 @@ using namespace std;
     CHECK(list1.getBack() == 42);
     list3[2] = 38;
     CHECK(list3.getBack() == 38);
-   }
+  }
 
-   SECTION("test get back on string list")
-   {
+  SECTION("test get back on string list")
+  {
     // list of size 1 should be able to get back item
     string values1[] = {"echo"};
     LList<string> list1(1, values1);
@@ -323,72 +327,70 @@ using namespace std;
     CHECK(list1.getBack() == "thanks-for-the-fish");
     list3[2] = "sierra";
     CHECK(list3.getBack() == "sierra");
-   }
-   }
- */
+  }
+}
+#endif
 
 /** Task 3: Test LList insertFront() basic functionality
  */
-/*
-   TEST_CASE("LList test basic insertFront() functionality",
-          "[task3]")
-   {
-   SECTION("test insert front on empty integer list")
-   {
+#ifdef task3_1
+TEST_CASE("LList test basic insertFront() functionality", "[task3]")
+{
+  SECTION("test insert front on empty integer list")
+  {
     LList<int> list;
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // list goes from empty to size 1
     list.insertFront(5);
     CHECK(list.getSize() == 1);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ 5 ]");
 
     // list goes to size 2 now
     list.insertFront(7);
     CHECK(list.getSize() == 2);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ 7, 5 ]");
-   }
+  }
 
-   SECTION("test insert front on empty string list")
-   {
+  SECTION("test insert front on empty string list")
+  {
     LList<string> list;
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // list goes from empty to size 1
     list.insertFront("echo");
     CHECK(list.getSize() == 1);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ echo ]");
 
     // list goes to size 2 now
     list.insertFront("golf");
     CHECK(list.getSize() == 2);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ golf, echo ]");
-   }
-   }
- */
+  }
+}
+#endif
 
 /** Task 3: Test LList insertFront() and overloaded operator<<
  */
-/*
-   TEST_CASE("LList test insertFront() and overloaded operator<<",
-          "[task3]")
-   {
-   SECTION("test array based constructor on integer list")
-   {
+#ifdef task3_2
+TEST_CASE("LList test insertFront() and overloaded operator<<", "[task3]")
+{
+  SECTION("test array based constructor on integer list")
+  {
     int values[] = {1, 3, -2, -4, 7};
     LList<int> list(5, values);
 
     // nonempty list should not be empty
     CHECK(list.getSize() == 5);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 5 [ 1, 3, -2, -4, 7 ]");
 
     // test indexing access
@@ -403,16 +405,16 @@ using namespace std;
     list << 38;
     CHECK(list.getSize() == 7);
     CHECK(list.str() == "<list> size: 7 [ 38, 22, 1, 3, 42, -4, 7 ]");
-   }
+  }
 
-   SECTION("test array based constructor on string list")
-   {
+  SECTION("test array based constructor on string list")
+  {
     string values[] = {"alpha", "charlie", "negative-bravo", "negative-delta", "golf"};
     LList<string> list(5, values);
 
     // nonempty list should not be empty
     CHECK(list.getSize() == 5);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 5 [ alpha, charlie, negative-bravo, negative-delta, golf ]");
 
     // test indexing access
@@ -427,18 +429,17 @@ using namespace std;
     list << "zulu";
     CHECK(list.getSize() == 7);
     CHECK(list.str() == "<list> size: 7 [ zulu, victor, alpha, charlie, life-universe-everything, negative-delta, golf ]");
-   }
-   }
- */
+  }
+}
+#endif
 
 /** Task 4: Test LList deleteIndex() mutator method
  */
-/*
-   TEST_CASE("LList test deleteIndex() mutator method",
-          "[task4]")
-   {
-   SECTION("test delete value at index from list of integers")
-   {
+#ifdef task4
+TEST_CASE("LList test deleteIndex() mutator method", "[task4]")
+{
+  SECTION("test delete value at index from list of integers")
+  {
     int values[] = {3, 1, 4, 2};
     LList<int> list(4, values);
 
@@ -465,18 +466,18 @@ using namespace std;
     CHECK(list.getSize() == 1);
     CHECK(list.getFront() == 1);
     CHECK(list.getBack() == 1);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ 1 ]");
 
     // test delete and list becomes empty
     list.deleteIndex(0);
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
-   }
+  }
 
-   SECTION("test delete value at index from list of strings")
-   {
+  SECTION("test delete value at index from list of strings")
+  {
     string values[] = {"charlie", "alpha", "delta", "bravo"};
     LList<string> list(4, values);
 
@@ -503,26 +504,25 @@ using namespace std;
     CHECK(list.getSize() == 1);
     CHECK(list.getFront() == "alpha");
     CHECK(list.getBack() == "alpha");
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ alpha ]");
 
     // test delete and list becomes empty
     list.deleteIndex(0);
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
-   }
-   }
- */
+  }
+}
+#endif
 
 /** Task 5: Test LList deleteValue() mutator method
  */
-/*
-   TEST_CASE("LList test deleteValue() mutator method",
-          "[task5]")
-   {
-   SECTION("test deletion of values from list of integers")
-   {
+#ifdef task5
+TEST_CASE("LList test deleteValue() mutator method", "[task5]")
+{
+  SECTION("test deletion of values from list of integers")
+  {
     int values[] = {1, 3, 2, 4, 3, 4, 5};
     LList<int> list(7, values);
 
@@ -555,21 +555,21 @@ using namespace std;
     CHECK(list.getSize() == 2);
     CHECK(list.getFront() == 3);
     CHECK(list.getBack() == 3);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ 3, 3 ]");
 
     // test delete two values, list is now empty
     list.deleteValue(3);
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // test request of nonexistent value from empty list
     CHECK_THROWS_AS(list.deleteValue(6), ListValueNotFoundException);
-   }
+  }
 
-   SECTION("test deletion of values from list of strings")
-   {
+  SECTION("test deletion of values from list of strings")
+  {
     string values[] = {"alpha", "charlie", "bravo", "delta", "charlie", "delta", "echo"};
     LList<string> list(7, values);
 
@@ -602,20 +602,20 @@ using namespace std;
     CHECK(list.getSize() == 2);
     CHECK(list.getFront() == "charlie");
     CHECK(list.getBack() == "charlie");
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ charlie, charlie ]");
 
     // test delete two values, list is now empty
     list.deleteValue("charlie");
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // test request of nonexistent value from empty list
     CHECK_THROWS_AS(list.deleteValue("whisky"), ListValueNotFoundException);
-   }
-   }
- */
+  }
+}
+#endif
 
 /** Tasks complete: LList<int> concrete linked list implementation of list of integers
  * Once you have completed tasks 1-5 and are passsing all of the above tests,
@@ -623,17 +623,16 @@ using namespace std;
  * on the LList class, and in fact perform exactly the same set of tests performed
  * on the AList in the other unit test file.
  */
-/*
-   TEST_CASE("LList<int> test integer list concrete linked list implementation",
-          "[task5]")
-   {
-   SECTION("test empty list is empty")
-   {
+#ifdef all_tasks_complete
+TEST_CASE("LList<int> test integer list concrete linked list implementation", "[task5]")
+{
+  SECTION("test empty list is empty")
+  {
     LList<int> empty;
 
     // empty lists should be empty
     CHECK(empty.getSize() == 0);
-    CHECK(empty.isEmpty() );
+    CHECK(empty.isEmpty());
     CHECK(empty.str() == "<list> size: 0 [ ]");
 
     // empty lists should compare as being equal
@@ -649,18 +648,18 @@ using namespace std;
     // empty list can be cleared and is still empty
     empty.clear();
     CHECK(empty.getSize() == 0);
-    CHECK(empty.isEmpty() );
+    CHECK(empty.isEmpty());
     CHECK(empty.str() == "<list> size: 0 [ ]");
-   }
+  }
 
-   SECTION("test array based constructor")
-   {
+  SECTION("test array based constructor")
+  {
     int values[] = {1, 3, -2, -4, 7};
     LList<int> list(5, values);
 
     // nonempty list should not be empty
     CHECK(list.getSize() == 5);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 5 [ 1, 3, -2, -4, 7 ]");
 
     // test access to front and back
@@ -674,7 +673,7 @@ using namespace std;
     CHECK(list[3] == -4);
     CHECK(list[4] == 7);
     CHECK_THROWS_AS(list[-1], ListMemoryBoundsException);
-    CHECK_THROWS_AS(list[5],  ListMemoryBoundsException);
+    CHECK_THROWS_AS(list[5], ListMemoryBoundsException);
     list[2] = 42;
     CHECK(list[2] == 42);
     CHECK(list.str() == "<list> size: 5 [ 1, 3, 42, -4, 7 ]");
@@ -703,10 +702,10 @@ using namespace std;
     CHECK(list.getFront() == -38);
     CHECK(list.getBack() == 38);
     CHECK(list.str() == "<list> size: 9 [ -38, -22, 1, 3, 42, -4, 7, 22, 38 ]");
-   }
+  }
 
-   SECTION("test copy constructor")
-   {
+  SECTION("test copy constructor")
+  {
     int values[] = {3, 1, 4, 2};
     LList<int> list(4, values);
     LList<int> copy = list;
@@ -729,86 +728,86 @@ using namespace std;
     copy.deleteValue(2);
     CHECK_FALSE(copy == list);
     CHECK_FALSE(list == copy);
-   }
+  }
 
-   SECTION("test clear operation")
-   {
+  SECTION("test clear operation")
+  {
     int values[] = {3, 1, 4, 2};
     LList<int> list(4, values);
 
     // list is not empty before clear
     CHECK(list.getSize() == 4);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 4 [ 3, 1, 4, 2 ]");
 
     // list is empty after clear
     list.clear();
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // cleared list should be equal to empty list
     LList<int> empty;
     CHECK(list == empty);
     CHECK(empty == list);
-   }
+  }
 
-   SECTION("test deleting front values")
-   {
+  SECTION("test deleting front values")
+  {
     int values[] = {3, 1, 4};
     LList<int> list(3, values);
 
     // delete from list front with more than 1 item
     list.deleteFront();
     CHECK(list.getSize() == 2);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ 1, 4 ]");
 
     // delete from list front with more than 1 item
     list.deleteFront();
     CHECK(list.getSize() == 1);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ 4 ]");
 
     // delete from list front with 1 item, lists becomes empty
     list.deleteFront();
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // deleting from front of empty list should complain
     CHECK_THROWS_AS(list.deleteFront(), ListEmptyException);
-   }
+  }
 
-   SECTION("test deleting back values")
-   {
+  SECTION("test deleting back values")
+  {
     int values[] = {3, 1, 4};
     LList<int> list(3, values);
 
     // delete from list back with more than 1 item
     list.deleteBack();
     CHECK(list.getSize() == 2);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ 3, 1 ]");
 
     // delete from list back with more than 1 item
     list.deleteBack();
     CHECK(list.getSize() == 1);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ 3 ]");
 
     // delete from list back with 1 item, lists becomes empty
     list.deleteBack();
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
 
     // deleting from back of empty list should complain
     CHECK_THROWS_AS(list.deleteBack(), ListEmptyException);
-   }
+  }
 
-   SECTION("test delete value at index")
-   {
+  SECTION("test delete value at index")
+  {
     int values[] = {3, 1, 4, 2};
     LList<int> list(4, values);
 
@@ -835,19 +834,18 @@ using namespace std;
     CHECK(list.getSize() == 1);
     CHECK(list.getFront() == 1);
     CHECK(list.getBack() == 1);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 1 [ 1 ]");
 
     // test delete and list becomes empty
     list.deleteIndex(0);
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
+  }
 
-   }
-
-   SECTION("test deletion of values from list")
-   {
+  SECTION("test deletion of values from list")
+  {
     int values[] = {1, 3, 2, 4, 3, 4, 5};
     LList<int> list(7, values);
 
@@ -880,18 +878,18 @@ using namespace std;
     CHECK(list.getSize() == 2);
     CHECK(list.getFront() == 3);
     CHECK(list.getBack() == 3);
-    CHECK_FALSE(list.isEmpty() );
+    CHECK_FALSE(list.isEmpty());
     CHECK(list.str() == "<list> size: 2 [ 3, 3 ]");
 
     // test delete two values, list is now empty
     list.deleteValue(3);
     CHECK(list.getSize() == 0);
-    CHECK(list.isEmpty() );
+    CHECK(list.isEmpty());
     CHECK(list.str() == "<list> size: 0 [ ]");
-   }
+  }
 
-   SECTION("test list iteration")
-   {
+  SECTION("test list iteration")
+  {
     int values[] = {3, 1, 4, 2};
     LList<int> list(4, values);
 
@@ -919,14 +917,12 @@ using namespace std;
       CHECK(value == values[index]);
       index++;
     }
-   }
-   }
- */
+  }
+}
 
 /** Tasks complete: Test LList<string> concrete linked list
  *   implementation of list of strings
  */
-/*
 TEST_CASE("LList<string> test string list concrete linked list implementation", "[task5]")
 {
   SECTION("test empty list is empty")
@@ -1223,4 +1219,4 @@ TEST_CASE("LList<string> test string list concrete linked list implementation", 
     }
   }
 }
-*/
+#endif

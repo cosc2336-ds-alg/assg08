@@ -189,7 +189,7 @@ The `insertBack()` has the same purpose for our `List` as we did in a
 previous assignment, it simply appends a new item to the back of the
 current list.  So `insertBack()` takes a `value` of type `T` as its
 input, and it should be passed in as a constant reference parameter. As
-we did in the previous assignment, this method returns back a reference
+we did in the previous assignment, this method returns a reference
 to itself, to support the overloaded `>>` operator.  So you should
 be returning `*this` at the end of your function, and the return type
 of the function should be a `List<T>&` reference.  Again see the

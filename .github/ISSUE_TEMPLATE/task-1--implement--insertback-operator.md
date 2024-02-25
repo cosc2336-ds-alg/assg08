@@ -30,3 +30,5 @@ Appending on a linked list is hopefully relatively easy.  You do have to check f
 
 - You should make it a habit to always reuse code instead of repeating code.  Here you need to test if the list is empty or not.  Reuse the `isEmpty()` function instead of testing size or the status of `front` and `back` pointers.  This makes your intention clearer (`isEmpty()` is generally more readable).  And it means if we want to change how we test if the list is empty or not, we can do it in one function if all parts of the class use this function when checking if the list is empty or not. 
 - Make sure that you uncomment the calls to `insertBack()` in the `LList` constructors so that they are reusing your function and properly constructing lists now.
+- You are required to be correctly allocating a new node and managing the linked list as suggested.  When the list is of size 1, both `front` and `back` pointers of the linked list should be pointing to the new `Node` item just created.
+- Your overloaded `operator>>()` should be reusing the `insertBack()` method.  It should have the same signature as this method.
